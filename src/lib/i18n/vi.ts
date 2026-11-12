@@ -50,8 +50,13 @@ export const vi = {
   'single.filter.allMaps': 'Tất cả bản đồ',
   'single.filter.category': 'Phân loại vũ khí',
   'single.filter.cost': 'Khoảng giá',
+  'single.filter.maxCost': 'Giá tối đa: {cost} creds',
+  'single.filter.anyCost': 'Mọi mức giá',
   'single.filter.poolCount': 'Khả dụng: {count} mục',
   'single.empty.hint': 'Thử nới lỏng bộ lọc để có thêm kết quả',
+  'single.combo.title': 'Combo trận đấu',
+  'single.combo.desc': 'Random đồng thời Agent + Map + Weapon',
+  'single.combo.button': 'Random Combo',
 
   // Squad Random
   'squad.title': 'Random đội hình 5 người',

@@ -52,8 +52,13 @@ export const en: Record<TranslationKey, string> = {
   'single.filter.allMaps': 'All maps',
   'single.filter.category': 'Weapon Category',
   'single.filter.cost': 'Cost range',
+  'single.filter.maxCost': 'Max cost: {cost} creds',
+  'single.filter.anyCost': 'Any cost',
   'single.filter.poolCount': 'Available: {count} items',
   'single.empty.hint': 'Try relaxing your filters to see results',
+  'single.combo.title': 'Match Combo',
+  'single.combo.desc': 'Randomize Agent + Map + Weapon simultaneously',
+  'single.combo.button': 'Random Combo',
 
   // Squad Random
   'squad.title': '5-Player Squad Randomizer',
