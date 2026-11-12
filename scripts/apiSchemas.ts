@@ -170,9 +170,21 @@ export const mapRotationSchema = z.object({
   activeSlugs: z.array(z.string().min(1)),
 });
 
+export const dataMetaSchema = z.object({
+  generatedAt: z.string().min(1),
+  dataVersion: z.string().min(1),
+  source: z.literal('valorant-api.com'),
+  counts: z.object({
+    agents: z.number().int().min(0),
+    maps: z.number().int().min(0),
+    weapons: z.number().int().min(0),
+  }),
+});
+
 export type ApiAgent = z.infer<typeof apiAgentSchema>;
 export type ApiMap = z.infer<typeof apiMapSchema>;
 export type ApiWeapon = z.infer<typeof apiWeaponSchema>;
 export type CommittedAgentFile = z.infer<typeof agentFileSchema>;
 export type CommittedMapFile = z.infer<typeof mapFileSchema>;
 export type CommittedWeaponFile = z.infer<typeof weaponFileSchema>;
+export type CommittedMetaFile = z.infer<typeof dataMetaSchema>;

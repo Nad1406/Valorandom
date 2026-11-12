@@ -1,0 +1,1738 @@
+{
+  "meta": {
+    "generatedAt": "2026-11-12",
+    "dataVersion": "valorant-api-2026-11-12"
+  },
+  "items": [
+    {
+      "id": "41fb69c1-4189-7b37-f117-bcaf1e96f1bf",
+      "slug": "astra",
+      "displayName": {
+        "en": "Astra",
+        "vi": "Astra"
+      },
+      "role": "controller",
+      "roleName": {
+        "en": "Controller",
+        "vi": "Kiểm soát"
+      },
+      "description": {
+        "en": "Ghanaian Agent Astra harnesses the energies of the cosmos to reshape battlefields to her whim. With full command of her astral form and a talent for deep strategic foresight, she's always eons ahead of her enemy's next move.",
+        "vi": "Astra là một đặc vụ tới từ Ghana, cô sử dụng năng lượng của vũ trụ để định hình trận chiến theo ý muốn của bản thân. Với khả năng điều khiển thể tinh vân và tài năng chiến thuật bao quát, cô ấy luôn đi trước đối thủ của mình 10 bước."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/41fb69c1-4189-7b37-f117-bcaf1e96f1bf/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/41fb69c1-4189-7b37-f117-bcaf1e96f1bf/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/41fb69c1-4189-7b37-f117-bcaf1e96f1bf/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Nova Pulse",
+            "vi": "Nova Pulse"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/41fb69c1-4189-7b37-f117-bcaf1e96f1bf/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Nebula",
+            "vi": "Nebula"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/41fb69c1-4189-7b37-f117-bcaf1e96f1bf/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Gravity Well",
+            "vi": "Gravity Well"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/41fb69c1-4189-7b37-f117-bcaf1e96f1bf/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Cosmic Divide",
+            "vi": "Cosmic Divide"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/41fb69c1-4189-7b37-f117-bcaf1e96f1bf/abilities/ultimate/displayicon.png"
+        },
+        {
+          "slot": "passive",
+          "displayName": {
+            "en": "Astral Form",
+            "vi": "Astral Form"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/41fb69c1-4189-7b37-f117-bcaf1e96f1bf/abilities/passive/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "5f8d3a7f-467b-97f3-062c-13acf203c006",
+      "slug": "breach",
+      "displayName": {
+        "en": "Breach",
+        "vi": "Breach"
+      },
+      "role": "initiator",
+      "roleName": {
+        "en": "Initiator",
+        "vi": "Khởi tranh"
+      },
+      "description": {
+        "en": "The bionic Swede Breach fires powerful, targeted kinetic blasts to aggressively clear a path through enemy ground. The damage and disruption he inflicts ensures no fight is ever fair.",
+        "vi": "Breach, gã Thụy Điển với thân hình đầy máy móc, có thể bắn ra các luồng năng lượng động học mạnh mẽ tới mục tiêu và mở đường xuyên qua lãnh địa của đối phương. Với sát thương đáng kể cùng khả năng gây rối, Breach luôn đảm bảo đồng đội chiếm được thế thượng phong khi giao chiến."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/5f8d3a7f-467b-97f3-062c-13acf203c006/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/5f8d3a7f-467b-97f3-062c-13acf203c006/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/5f8d3a7f-467b-97f3-062c-13acf203c006/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Flashpoint",
+            "vi": "Flashpoint"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/5f8d3a7f-467b-97f3-062c-13acf203c006/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Fault Line",
+            "vi": "Fault Line"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/5f8d3a7f-467b-97f3-062c-13acf203c006/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Aftershock",
+            "vi": "Aftershock"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/5f8d3a7f-467b-97f3-062c-13acf203c006/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Rolling Thunder",
+            "vi": "Rolling Thunder"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/5f8d3a7f-467b-97f3-062c-13acf203c006/abilities/ultimate/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "9f0d8ba9-4140-b941-57d3-a7ad57c6b417",
+      "slug": "brimstone",
+      "displayName": {
+        "en": "Brimstone",
+        "vi": "Brimstone"
+      },
+      "role": "controller",
+      "roleName": {
+        "en": "Controller",
+        "vi": "Kiểm soát"
+      },
+      "description": {
+        "en": "Joining from the U.S.A., Brimstone's orbital arsenal ensures his squad always has the advantage. His ability to deliver utility precisely and safely make him the unmatched boots-on-the-ground commander.",
+        "vi": "Đến từ Hợp chủng quốc Hoa Kỳ, Brimstone luôn đảm bảo lợi thế cho đồng đội bằng những vũ khí tối tân ngoài quỹ đạo của mình. Những chiêu thức mang lại khả năng hỗ trợ chính xác và đảm bảo an toàn khiến Brimstone xứng đáng là một sĩ quan lục quân vô địch."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/9f0d8ba9-4140-b941-57d3-a7ad57c6b417/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/9f0d8ba9-4140-b941-57d3-a7ad57c6b417/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/9f0d8ba9-4140-b941-57d3-a7ad57c6b417/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Stim Beacon",
+            "vi": "Stim Beacon"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/9f0d8ba9-4140-b941-57d3-a7ad57c6b417/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Incendiary",
+            "vi": "Incendiary"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/9f0d8ba9-4140-b941-57d3-a7ad57c6b417/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Sky Smoke",
+            "vi": "Sky Smoke"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/9f0d8ba9-4140-b941-57d3-a7ad57c6b417/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Orbital Strike",
+            "vi": "Orbital Strike"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/9f0d8ba9-4140-b941-57d3-a7ad57c6b417/abilities/ultimate/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "22697a3d-45bf-8dd7-4fec-84a9e28c69d7",
+      "slug": "chamber",
+      "displayName": {
+        "en": "Chamber",
+        "vi": "Chamber"
+      },
+      "role": "sentinel",
+      "roleName": {
+        "en": "Sentinel",
+        "vi": "Hộ vệ"
+      },
+      "description": {
+        "en": "Well-dressed and well-armed, French weapons designer Chamber expels aggressors with deadly precision. He leverages his custom arsenal to hold the line and pick off enemies from afar, with a contingency built for every plan.",
+        "vi": "Với vẻ ngoài lịch lãm và trang bị tối tân, chuyên gia vũ khí Chamber đến từ nước Pháp sẽ truy quét đối thủ bằng sự chính xác tuyệt đối. Anh có thể tận dụng kho vũ khí chuyên biệt của mình để giữ vững chiến tuyến, bắn hạ kẻ địch từ xa với phương án dự phòng hoàn hảo dành cho mọi kế hoạch tác chiến."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Rendezvous",
+            "vi": "Rendezvous"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Trademark",
+            "vi": "Trademark"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Headhunter",
+            "vi": "Headhunter"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Tour De Force",
+            "vi": "Tour De Force"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/abilities/ultimate/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "1dbf2edd-4729-0984-3115-daa5eed44993",
+      "slug": "clove",
+      "displayName": {
+        "en": "Clove",
+        "vi": "Clove"
+      },
+      "role": "controller",
+      "roleName": {
+        "en": "Controller",
+        "vi": "Kiểm soát"
+      },
+      "description": {
+        "en": "Scottish troublemaker Clove makes mischief for enemies in both the heat of combat and the cold of death. The young immortal keeps foes guessing, even from beyond the grave, their return to the living only ever a moment away.",
+        "vi": "Chuyên gia gây rối đến từ Scotland, Clove \"quậy đục nước\" kẻ địch ngay giữa chiến trường nóng bỏng và cả trước cái chết lạnh lẽo. Kẻ bất tử trẻ tuổi luôn khiến kẻ địch phải đau đầu, kể cả khi đã bị vùi sâu xuống lòng đất, cậu ấy vẫn có thể tái sinh chỉ sau chốc lát."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/1dbf2edd-4729-0984-3115-daa5eed44993/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/1dbf2edd-4729-0984-3115-daa5eed44993/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/1dbf2edd-4729-0984-3115-daa5eed44993/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Pick-me-up",
+            "vi": "Pick-me-up"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/1dbf2edd-4729-0984-3115-daa5eed44993/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Ruse",
+            "vi": "Ruse"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/1dbf2edd-4729-0984-3115-daa5eed44993/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Not Dead Yet",
+            "vi": "Not Dead Yet"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/1dbf2edd-4729-0984-3115-daa5eed44993/abilities/ultimate/displayicon.png"
+        },
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Meddle",
+            "vi": "Meddle"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/1dbf2edd-4729-0984-3115-daa5eed44993/abilities/ability1/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "117ed9e3-49f3-6512-3ccf-0cada7e3823b",
+      "slug": "cypher",
+      "displayName": {
+        "en": "Cypher",
+        "vi": "Cypher"
+      },
+      "role": "sentinel",
+      "roleName": {
+        "en": "Sentinel",
+        "vi": "Hộ vệ"
+      },
+      "description": {
+        "en": "The Moroccan information broker, Cypher is a one-man surveillance network who keeps tabs on the enemy's every move. No secret is safe. No maneuver goes unseen. Cypher is always watching.",
+        "vi": "Là một chuyên gia môi giới thông tin người Ma-rốc. Cypher có thể theo dõi mọi di chuyển của đối thủ với hệ thống giám sát tinh vi của mình. Mọi bí mật đều sẽ bị phát hiện. Mọi bước đi đều sẽ bị phát giác. Không gì có thể lọt khỏi mắt của Cypher."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/117ed9e3-49f3-6512-3ccf-0cada7e3823b/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/117ed9e3-49f3-6512-3ccf-0cada7e3823b/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/117ed9e3-49f3-6512-3ccf-0cada7e3823b/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Cyber Cage",
+            "vi": "Cyber Cage"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/117ed9e3-49f3-6512-3ccf-0cada7e3823b/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Spycam",
+            "vi": "Spycam"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/117ed9e3-49f3-6512-3ccf-0cada7e3823b/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Trapwire",
+            "vi": "Trapwire"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/117ed9e3-49f3-6512-3ccf-0cada7e3823b/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Neural Theft",
+            "vi": "Neural Theft"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/117ed9e3-49f3-6512-3ccf-0cada7e3823b/abilities/ultimate/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "cc8b64c8-4b25-4ff9-6e7f-37b4da43d235",
+      "slug": "deadlock",
+      "displayName": {
+        "en": "Deadlock",
+        "vi": "Deadlock"
+      },
+      "role": "sentinel",
+      "roleName": {
+        "en": "Sentinel",
+        "vi": "Hộ vệ"
+      },
+      "description": {
+        "en": "Norwegian operative Deadlock deploys an array of cutting-edge nanowire to secure the battlefield from even the most lethal assault. No one escapes her vigilant watch, nor survives her unyielding ferocity.",
+        "vi": "Đặc Vụ người Na-uy: Deadlock, sử dụng hàng loạt sợi dây nano tân tiến nhằm bảo vệ chiến trường khỏi những đợt công kích nguy hiểm nhất. Chẳng ai có thể thoát khỏi sự truy sát gắt gao, cũng như không thể sống sót trước sự hung dữ ngoan cường của cô ấy."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Sonic Sensor",
+            "vi": "Sonic Sensor"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Barrier Mesh",
+            "vi": "Barrier Mesh"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "GravNet",
+            "vi": "GravNet"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Annihilation",
+            "vi": "Annihilation"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/abilities/ultimate/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "dade69b4-4f5a-8528-247b-219e5a1facd6",
+      "slug": "fade",
+      "displayName": {
+        "en": "Fade",
+        "vi": "Fade"
+      },
+      "role": "initiator",
+      "roleName": {
+        "en": "Initiator",
+        "vi": "Khởi tranh"
+      },
+      "description": {
+        "en": "Turkish bounty hunter Fade unleashes the power of raw nightmare to seize enemy secrets. Attuned with terror itself, she hunts down targets and reveals their deepest fears - before crushing them in the dark.",
+        "vi": "Fade - thợ săn tiền thường tới từ Thổ Nhĩ Kỳ, người điều khiển sức mạnh ác mộng để chiếm đoạt những bí mật của kẻ thù. Là hiện thân của sự sợ hãi, cô ấy săn đuổi và khai thác những nỗi sợ sâu thẳm nhất của mục tiêu - trước khi nghiền nát chúng trong bóng tối."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/dade69b4-4f5a-8528-247b-219e5a1facd6/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/dade69b4-4f5a-8528-247b-219e5a1facd6/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/dade69b4-4f5a-8528-247b-219e5a1facd6/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Seize",
+            "vi": "Seize"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/dade69b4-4f5a-8528-247b-219e5a1facd6/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Haunt",
+            "vi": "Haunt"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/dade69b4-4f5a-8528-247b-219e5a1facd6/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Prowler",
+            "vi": "Prowler"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/dade69b4-4f5a-8528-247b-219e5a1facd6/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Nightfall",
+            "vi": "Nightfall"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/dade69b4-4f5a-8528-247b-219e5a1facd6/abilities/ultimate/displayicon.png"
+        },
+        {
+          "slot": "passive",
+          "displayName": {
+            "en": "Terror Trails",
+            "vi": "Terror Trails"
+          },
+          "displayIcon": ""
+        }
+      ]
+    },
+    {
+      "id": "e370fa57-4757-3604-3648-499e1f642d3f",
+      "slug": "gekko",
+      "displayName": {
+        "en": "Gekko",
+        "vi": "Gekko"
+      },
+      "role": "initiator",
+      "roleName": {
+        "en": "Initiator",
+        "vi": "Khởi tranh"
+      },
+      "description": {
+        "en": "Gekko the Angeleno leads a tight-knit crew of calamitous creatures. His buddies bound forward, scattering enemies out of the way, with Gekko chasing them down to regroup and go again.",
+        "vi": "Gekko - gã trai phố thị L.A. - là người dẫn đầu biệt đội toàn những sinh vật \"lắm chiêu\" và rất thân thiết. Gekko đuổi theo những đồng đội đang mải miết lao tới hất tung tất cả kẻ thù đang ngáng đường, ráng sức tập hợp chúng lại để có thể tiếp tục ra chiêu."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Wingman",
+            "vi": "Wingman"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Dizzy",
+            "vi": "Dizzy"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Mosh Pit",
+            "vi": "Mosh Pit"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Thrash",
+            "vi": "Thrash"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/abilities/ultimate/displayicon.png"
+        },
+        {
+          "slot": "passive",
+          "displayName": {
+            "en": "Globule",
+            "vi": "Globule"
+          },
+          "displayIcon": ""
+        }
+      ]
+    },
+    {
+      "id": "95b78ed7-4637-86d9-7e41-71ba8c293152",
+      "slug": "harbor",
+      "displayName": {
+        "en": "Harbor",
+        "vi": "Harbor"
+      },
+      "role": "controller",
+      "roleName": {
+        "en": "Controller",
+        "vi": "Kiểm soát"
+      },
+      "description": {
+        "en": "Hailing from India’s coast, Harbor storms the field wielding ancient technology with dominion over water. He unleashes frothing rapids and crushing waves to shield his allies, or pummel those that oppose him.",
+        "vi": "Xuất thân từ vùng bờ biển của Ấn Độ, Harbor nhấn chìm chiến trường bằng thứ công nghệ cổ xưa có khả năng điều khiển nước. Hắn tung ra những ngọn thác hung dữ và những con sóng bạc đầu để bảo hộ cho đồng đội hoặc đè bẹp kẻ thù."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/95b78ed7-4637-86d9-7e41-71ba8c293152/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/95b78ed7-4637-86d9-7e41-71ba8c293152/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/95b78ed7-4637-86d9-7e41-71ba8c293152/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "High Tide",
+            "vi": "High Tide"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/95b78ed7-4637-86d9-7e41-71ba8c293152/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Storm Surge",
+            "vi": "Storm Surge"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/95b78ed7-4637-86d9-7e41-71ba8c293152/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Cove",
+            "vi": "Cove"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/95b78ed7-4637-86d9-7e41-71ba8c293152/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Reckoning",
+            "vi": "Reckoning"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/95b78ed7-4637-86d9-7e41-71ba8c293152/abilities/ultimate/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "ddd5a15c-4fbe-42fa-3789-11a55ca5ee04",
+      "slug": "hush",
+      "displayName": {
+        "en": "Hush",
+        "vi": "Hush"
+      },
+      "role": "duelist",
+      "roleName": {
+        "en": "Duelist",
+        "vi": "Đối đầu"
+      },
+      "description": {
+        "en": "Chinese operative Hush uses her telekinesis to close the most classified cases. Fighting with precision and finesse, she redirects her combat utility in midair to disrupt and displace the enemy team before suspending them helplessly for the killing blow.",
+        "vi": "Điệp viên người Trung Quốc - Hush, dùng siêu năng ngoại cảm của mình để giải quyết những vụ án tuyệt mật nhất. Chiến đấu một cách chính xác và tinh tế, cô chuyển hướng các tiện ích giao tranh của mình ngay trên không để phá rối và đánh bật đội địch, trước khi treo chúng lơ lửng bất lực chờ đòn kết liễu."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/ddd5a15c-4fbe-42fa-3789-11a55ca5ee04/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/ddd5a15c-4fbe-42fa-3789-11a55ca5ee04/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/ddd5a15c-4fbe-42fa-3789-11a55ca5ee04/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Flashbulb",
+            "vi": "Flashbulb"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/ddd5a15c-4fbe-42fa-3789-11a55ca5ee04/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Displacement",
+            "vi": "Displacement"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/ddd5a15c-4fbe-42fa-3789-11a55ca5ee04/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Flow",
+            "vi": "Flow"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/ddd5a15c-4fbe-42fa-3789-11a55ca5ee04/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Suspension",
+            "vi": "Suspension"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/ddd5a15c-4fbe-42fa-3789-11a55ca5ee04/abilities/ultimate/displayicon.png"
+        },
+        {
+          "slot": "passive",
+          "displayName": {
+            "en": "Telekinesis",
+            "vi": "Telekinesis"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/ddd5a15c-4fbe-42fa-3789-11a55ca5ee04/abilities/passive/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "0e38b510-41a8-5780-5e8f-568b2a4f2d6c",
+      "slug": "iso",
+      "displayName": {
+        "en": "Iso",
+        "vi": "Iso"
+      },
+      "role": "duelist",
+      "roleName": {
+        "en": "Duelist",
+        "vi": "Đối đầu"
+      },
+      "description": {
+        "en": "Chinese fixer for hire Iso falls into a flow state to dismantle the opposition. Reconfiguring ambient energy into bulletproof protection, he advances with focus towards his next duel to the death.",
+        "vi": "\"Lính đánh thuê\" người Trung Quốc, Iso rơi vào trạng thái dòng chảy để triệt tiêu đối thủ. Anh tái định hình cấu trúc năng lượng xung quanh thành một lớp bảo vệ chống đạn và vận sức tập trung vào trận đấu tay đôi tiếp theo cho đến khi có người ngã xuống."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Undercut",
+            "vi": "Undercut"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Kill Contract",
+            "vi": "Kill Contract"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/abilities/ultimate/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Double Tap",
+            "vi": "Double Tap"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Contingency",
+            "vi": "Contingency"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "passive",
+          "displayName": {
+            "en": "Focus",
+            "vi": "Focus"
+          },
+          "displayIcon": ""
+        }
+      ]
+    },
+    {
+      "id": "add6443a-41bd-e414-f6ad-e58d267f4e95",
+      "slug": "jett",
+      "displayName": {
+        "en": "Jett",
+        "vi": "Jett"
+      },
+      "role": "duelist",
+      "roleName": {
+        "en": "Duelist",
+        "vi": "Đối đầu"
+      },
+      "description": {
+        "en": "Representing her home country of South Korea, Jett's agile and evasive fighting style lets her take risks no one else can. She runs circles around every skirmish, cutting enemies up before they even know what hit them.",
+        "vi": "Đến từ Hàn Quốc, với phong cách chiến đấu nhanh nhẹn và huyền ảo, Jett có thể thực hiện những pha tấn công liều lĩnh đến bất ngờ. Thoắt ẩn thoắt hiện trong các cuộc giao tranh, cô ra đòn chặn đứng đối thủ trước khi chúng kịp hiểu chuyện gì xảy ra."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Updraft",
+            "vi": "Updraft"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Tailwind",
+            "vi": "Tailwind"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Cloudburst",
+            "vi": "Cloudburst"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Blade Storm",
+            "vi": "Blade Storm"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/abilities/ultimate/displayicon.png"
+        },
+        {
+          "slot": "passive",
+          "displayName": {
+            "en": "Drift",
+            "vi": "Drift"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/abilities/passive/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "601dbbe7-43ce-be57-2a40-4abd24953621",
+      "slug": "kay-o",
+      "displayName": {
+        "en": "KAY/O",
+        "vi": "KAY/O"
+      },
+      "role": "initiator",
+      "roleName": {
+        "en": "Initiator",
+        "vi": "Khởi tranh"
+      },
+      "description": {
+        "en": "KAY/O is a machine of war built for a single purpose: neutralizing radiants. His power to Suppress enemy abilities dismantles his opponents' capacity to fight back, securing him and his allies the ultimate edge.",
+        "vi": "KAY/O là một cỗ máy chiến tranh được chế tạo vì 1 mục đích duy nhất: vô hiệu hóa kẻ thù. Khả năng Áp Chế kỹ năng của kẻ địch khiến chúng không thể phản kháng chắc chắn sẽ mang đến lợi thế lớn cho KAY/O và đồng đội khi giao chiến."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/601dbbe7-43ce-be57-2a40-4abd24953621/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/601dbbe7-43ce-be57-2a40-4abd24953621/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/601dbbe7-43ce-be57-2a40-4abd24953621/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "FRAG/ment",
+            "vi": "FRAG/ment"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/601dbbe7-43ce-be57-2a40-4abd24953621/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "FLASH/drive",
+            "vi": "FLASH/drive"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/601dbbe7-43ce-be57-2a40-4abd24953621/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "ZERO/point",
+            "vi": "ZERO/point"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/601dbbe7-43ce-be57-2a40-4abd24953621/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "NULL/cmd",
+            "vi": "NULL/cmd"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/601dbbe7-43ce-be57-2a40-4abd24953621/abilities/ultimate/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "1e58de9c-4950-5125-93e9-a0aee9f98746",
+      "slug": "killjoy",
+      "displayName": {
+        "en": "Killjoy",
+        "vi": "Killjoy"
+      },
+      "role": "sentinel",
+      "roleName": {
+        "en": "Sentinel",
+        "vi": "Hộ vệ"
+      },
+      "description": {
+        "en": "The genius of Germany, Killjoy effortlessly secures key battlefield positions with her arsenal of inventions. If their damage doesn't take her enemies out, the debuff her robots provide will make short work of them.",
+        "vi": "Một thiên tài từ nước Đức với hàng loạt những sáng chế độc đáo, Killjoy hoàn toàn dễ dàng bảo kê những vị trí quan trọng nhất để thống lĩnh chiến trường. Ngoài việc sở hữu thiết bị có sát thương khủng, kỹ năng làm suy yếu đối thủ từ các robot sẽ giúp cô chặn đứng mọi kẻ địch chỉ trong tích tắc."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/1e58de9c-4950-5125-93e9-a0aee9f98746/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/1e58de9c-4950-5125-93e9-a0aee9f98746/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/1e58de9c-4950-5125-93e9-a0aee9f98746/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Nanoswarm",
+            "vi": "Nanoswarm"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/1e58de9c-4950-5125-93e9-a0aee9f98746/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "ALARMBOT",
+            "vi": "ALARMBOT"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/1e58de9c-4950-5125-93e9-a0aee9f98746/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "TURRET",
+            "vi": "TURRET"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/1e58de9c-4950-5125-93e9-a0aee9f98746/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Lockdown",
+            "vi": "Lockdown"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/1e58de9c-4950-5125-93e9-a0aee9f98746/abilities/ultimate/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "7c8a4701-4de6-9355-b254-e09bc2a34b72",
+      "slug": "miks",
+      "displayName": {
+        "en": "Miks",
+        "vi": "Miks"
+      },
+      "role": "controller",
+      "roleName": {
+        "en": "Controller",
+        "vi": "Kiểm soát"
+      },
+      "description": {
+        "en": "Straight from Croatia, Miks takes the stage channeling pure sound energy. With his infectious passion and sonic powers, he rallies his squad to move as one as they set the tempo on the battlefield together.",
+        "vi": "Thẳng tiến từ Croatia, Miks bước lên sân khấu, dẫn dắt nguồn năng lượng âm thanh thuần khiết. Với đam mê lan tỏa và sức mạnh sóng âm của mình, anh hiệu triệu đồng đội hòa nhịp như một thể thống nhất, cùng nhau thiết lập nhịp điệu trên chiến trường."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/7c8a4701-4de6-9355-b254-e09bc2a34b72/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/7c8a4701-4de6-9355-b254-e09bc2a34b72/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/7c8a4701-4de6-9355-b254-e09bc2a34b72/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "M-pulse",
+            "vi": "M-pulse"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/7c8a4701-4de6-9355-b254-e09bc2a34b72/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Waveform",
+            "vi": "Waveform"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/7c8a4701-4de6-9355-b254-e09bc2a34b72/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Harmonize",
+            "vi": "Harmonize"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/7c8a4701-4de6-9355-b254-e09bc2a34b72/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Bassquake",
+            "vi": "Bassquake"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/7c8a4701-4de6-9355-b254-e09bc2a34b72/abilities/ultimate/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "bb2a4828-46eb-8cd1-e765-15848195d751",
+      "slug": "neon",
+      "displayName": {
+        "en": "Neon",
+        "vi": "Neon"
+      },
+      "role": "duelist",
+      "roleName": {
+        "en": "Duelist",
+        "vi": "Đối đầu"
+      },
+      "description": {
+        "en": "Filipino Agent Neon surges forward at shocking speeds, discharging bursts of bioelectric radiance as fast as her body generates it. She races ahead to catch enemies off guard then strikes them down quicker than lightning.",
+        "vi": "Neon, một Đặc Vụ người Phillipines với kỹ năng phóng về phía trước với tốc độ chóng mặt, bắn ra các chùm bức xạ điện sinh học nhanh như chính cách cơ thể cô ấy tạo ra nó. Cô luôn xông lên trước để tìm kẻ thù khi chúng chưa kịp trở tay, để rồi hạ gục chúng trong chớp mắt."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/bb2a4828-46eb-8cd1-e765-15848195d751/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/bb2a4828-46eb-8cd1-e765-15848195d751/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/bb2a4828-46eb-8cd1-e765-15848195d751/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "High Gear",
+            "vi": "High Gear"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/bb2a4828-46eb-8cd1-e765-15848195d751/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Relay Bolt",
+            "vi": "Relay Bolt"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/bb2a4828-46eb-8cd1-e765-15848195d751/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Fast Lane",
+            "vi": "Fast Lane"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/bb2a4828-46eb-8cd1-e765-15848195d751/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Overdrive",
+            "vi": "Overdrive"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/bb2a4828-46eb-8cd1-e765-15848195d751/abilities/ultimate/displayicon.png"
+        },
+        {
+          "slot": "passive",
+          "displayName": {
+            "en": "Battery",
+            "vi": "Battery"
+          },
+          "displayIcon": ""
+        }
+      ]
+    },
+    {
+      "id": "8e253930-4c05-31dd-1b6c-968525494517",
+      "slug": "omen",
+      "displayName": {
+        "en": "Omen",
+        "vi": "Omen"
+      },
+      "role": "controller",
+      "roleName": {
+        "en": "Controller",
+        "vi": "Kiểm soát"
+      },
+      "description": {
+        "en": "A phantom of a memory, Omen hunts in the shadows. He renders enemies blind, teleports across the field, then lets paranoia take hold as his foe scrambles to uncover where he might strike next.",
+        "vi": "Tựa như bóng ma của ký ức, Omen săn lùng trong bóng tối. Khả năng khống chế tầm nhìn và dịch chuyển tức thời của hắn khiến mọi đối thủ phải hoang mang tột độ vì có thể bị tấn công bất cứ lúc nào từ bất cứ nơi đâu."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/8e253930-4c05-31dd-1b6c-968525494517/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/8e253930-4c05-31dd-1b6c-968525494517/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/8e253930-4c05-31dd-1b6c-968525494517/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Paranoia",
+            "vi": "Paranoia"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/8e253930-4c05-31dd-1b6c-968525494517/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Dark Cover",
+            "vi": "Dark Cover"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/8e253930-4c05-31dd-1b6c-968525494517/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Shrouded Step",
+            "vi": "Shrouded Step"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/8e253930-4c05-31dd-1b6c-968525494517/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "From the Shadows",
+            "vi": "From the Shadows"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/8e253930-4c05-31dd-1b6c-968525494517/abilities/ultimate/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "eb93336a-449b-9c1b-0a54-a891f7921d69",
+      "slug": "phoenix",
+      "displayName": {
+        "en": "Phoenix",
+        "vi": "Phoenix"
+      },
+      "role": "duelist",
+      "roleName": {
+        "en": "Duelist",
+        "vi": "Đối đầu"
+      },
+      "description": {
+        "en": "Hailing from the U.K., Phoenix's star power shines through in his fighting style, igniting the battlefield with flash and flare. Whether he's got backup or not, he's rushing in to fight on his own terms.",
+        "vi": "Xuất thân từ nước Anh đầy mưa gió, sức mạnh của Phoenix nằm ở lối chiến đấu của hắn, với khả năng thiêu đốt cả chiến trường bằng hỏa mù chói lóa. Phoenix luôn tỏa sáng dù là phối hợp tác chiến cùng đồng đội hay chiến đấu độc lập."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/eb93336a-449b-9c1b-0a54-a891f7921d69/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/eb93336a-449b-9c1b-0a54-a891f7921d69/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/eb93336a-449b-9c1b-0a54-a891f7921d69/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Blaze",
+            "vi": "Blaze"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/eb93336a-449b-9c1b-0a54-a891f7921d69/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Hot Hands",
+            "vi": "Hot Hands"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/eb93336a-449b-9c1b-0a54-a891f7921d69/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Curveball",
+            "vi": "Curveball"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/eb93336a-449b-9c1b-0a54-a891f7921d69/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Run it Back",
+            "vi": "Run it Back"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/eb93336a-449b-9c1b-0a54-a891f7921d69/abilities/ultimate/displayicon.png"
+        },
+        {
+          "slot": "passive",
+          "displayName": {
+            "en": "Inner Fire",
+            "vi": "Inner Fire"
+          },
+          "displayIcon": ""
+        }
+      ]
+    },
+    {
+      "id": "f94c3b30-42be-e959-889c-5aa313dba261",
+      "slug": "raze",
+      "displayName": {
+        "en": "Raze",
+        "vi": "Raze"
+      },
+      "role": "duelist",
+      "roleName": {
+        "en": "Duelist",
+        "vi": "Đối đầu"
+      },
+      "description": {
+        "en": "Raze explodes out of Brazil with her big personality and big guns. With her blunt-force-trauma playstyle, she excels at flushing entrenched enemies and clearing tight spaces with a generous dose of \"boom.\"",
+        "vi": "Raze là một hiện tượng đến từ Brasil với cá tính nổi bật và những khẩu súng cực bự. Với lối chơi bùng nổ, cô luôn ép đối phương phải ra khỏi nơi ẩn nấp và dọn sạch đối thủ trong những địa hình chật hẹp với một liều thuốc nổ hạng nặng."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Blast Pack",
+            "vi": "Blast Pack"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Paint Shells",
+            "vi": "Paint Shells"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Boom Bot",
+            "vi": "Boom Bot"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Showstopper",
+            "vi": "Showstopper"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/abilities/ultimate/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "a3bfb853-43b2-7238-a4f1-ad90e9e46bcc",
+      "slug": "reyna",
+      "displayName": {
+        "en": "Reyna",
+        "vi": "Reyna"
+      },
+      "role": "duelist",
+      "roleName": {
+        "en": "Duelist",
+        "vi": "Đối đầu"
+      },
+      "description": {
+        "en": "Forged in the heart of Mexico, Reyna dominates single combat, popping off with each kill she scores. Her capability is only limited by her raw skill, making her sharply dependent on performance. ",
+        "vi": "Được tôi luyện ngay giữa trái tim của Mexico, Reyna luôn áp đảo trong các giao tranh đơn lẻ và trở nên mạnh mẽ hơn với mỗi đối thủ bị cô hạ gục. Sức mạnh của cô chỉ bị giới hạn bởi kỹ năng cá nhân, cũng là điều khiến cô bị lệ thuộc khá nhiều vào phong độ thi đấu của người chơi."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/a3bfb853-43b2-7238-a4f1-ad90e9e46bcc/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/a3bfb853-43b2-7238-a4f1-ad90e9e46bcc/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/a3bfb853-43b2-7238-a4f1-ad90e9e46bcc/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Devour",
+            "vi": "Devour"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/a3bfb853-43b2-7238-a4f1-ad90e9e46bcc/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Dismiss",
+            "vi": "Dismiss"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/a3bfb853-43b2-7238-a4f1-ad90e9e46bcc/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Leer",
+            "vi": "Leer"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/a3bfb853-43b2-7238-a4f1-ad90e9e46bcc/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Empress",
+            "vi": "Empress"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/a3bfb853-43b2-7238-a4f1-ad90e9e46bcc/abilities/ultimate/displayicon.png"
+        },
+        {
+          "slot": "passive",
+          "displayName": {
+            "en": "Vitality",
+            "vi": "Vitality"
+          },
+          "displayIcon": ""
+        }
+      ]
+    },
+    {
+      "id": "569fdd95-4d10-43ab-ca70-79becc718b46",
+      "slug": "sage",
+      "displayName": {
+        "en": "Sage",
+        "vi": "Sage"
+      },
+      "role": "sentinel",
+      "roleName": {
+        "en": "Sentinel",
+        "vi": "Hộ vệ"
+      },
+      "description": {
+        "en": "The bastion of China, Sage creates safety for herself and her team wherever she goes. Able to revive fallen friends and stave off forceful assaults, she provides a calm center to a hellish battlefield.",
+        "vi": "Đến từ Trung Quốc, Sage luôn đảm bảo cho mình và đồng đội được an toàn ở bất cứ nơi đâu cô đến. Với khả năng hồi sinh đồng đội đã ngã xuống và đẩy lùi những cuộc tấn công dữ dội, cô là hậu phương vững chắc cho đồng đội trong những trận giao tranh khốc liệt."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/569fdd95-4d10-43ab-ca70-79becc718b46/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/569fdd95-4d10-43ab-ca70-79becc718b46/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/569fdd95-4d10-43ab-ca70-79becc718b46/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Slow Orb",
+            "vi": "Slow Orb"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/569fdd95-4d10-43ab-ca70-79becc718b46/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Healing Orb",
+            "vi": "Healing Orb"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/569fdd95-4d10-43ab-ca70-79becc718b46/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Barrier Orb",
+            "vi": "Barrier Orb"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/569fdd95-4d10-43ab-ca70-79becc718b46/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Resurrection",
+            "vi": "Resurrection"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/569fdd95-4d10-43ab-ca70-79becc718b46/abilities/ultimate/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "6f2a04ca-43e0-be17-7f36-b3908627744d",
+      "slug": "skye",
+      "displayName": {
+        "en": "Skye",
+        "vi": "Skye"
+      },
+      "role": "initiator",
+      "roleName": {
+        "en": "Initiator",
+        "vi": "Khởi tranh"
+      },
+      "description": {
+        "en": "Hailing from Australia, Skye and her band of beasts trailblaze the way through hostile territory. With her creations hampering the enemy, and her power to heal others, the team is strongest and safest by Skye's side.",
+        "vi": "Đến từ nước Úc hoang dã, Skye cùng các tinh linh của mình sẽ mở đường đột phá dũng mãnh trong những lãnh địa nguy hiểm. Với dàn tạo vật phong phú có nhiệm vụ quấy rối kẻ địch cùng khả năng hồi máu, cô sẽ luôn mang đến cho đồng đội sự an toàn và cho phép họ thỏa sức chiến đấu ở phong độ cao nhất."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/6f2a04ca-43e0-be17-7f36-b3908627744d/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/6f2a04ca-43e0-be17-7f36-b3908627744d/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/6f2a04ca-43e0-be17-7f36-b3908627744d/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Trailblazer",
+            "vi": "Trailblazer"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/6f2a04ca-43e0-be17-7f36-b3908627744d/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Guiding Light",
+            "vi": "Guiding Light"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/6f2a04ca-43e0-be17-7f36-b3908627744d/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Regrowth",
+            "vi": "Regrowth"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/6f2a04ca-43e0-be17-7f36-b3908627744d/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Seekers",
+            "vi": "Seekers"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/6f2a04ca-43e0-be17-7f36-b3908627744d/abilities/ultimate/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "320b2a48-4d9b-a075-30f1-1f93a9b638fa",
+      "slug": "sova",
+      "displayName": {
+        "en": "Sova",
+        "vi": "Sova"
+      },
+      "role": "initiator",
+      "roleName": {
+        "en": "Initiator",
+        "vi": "Khởi tranh"
+      },
+      "description": {
+        "en": "Born from the eternal winter of Russia's tundra, Sova tracks, finds, and eliminates enemies with ruthless efficiency and precision. His custom bow and incredible scouting abilities ensure that even if you run, you cannot hide. ",
+        "vi": "Sinh ra tại vùng lãnh nguyên lạnh giá của nước Nga, Sova có khả năng tìm kiếm, đánh dấu và tiêu diệt đối thủ một cách hiệu quả và chính xác. Sở hữu cây cung đặc chế và những kỹ năng trinh sát hiểm hóc, con mồi của Sova sẽ chẳng bao giờ có thể trốn thoát."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Shock Bolt",
+            "vi": "Shock Bolt"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Recon Bolt",
+            "vi": "Recon Bolt"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Owl Drone",
+            "vi": "Owl Drone"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Hunter's Fury",
+            "vi": "Hunter's Fury"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa/abilities/ultimate/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "b444168c-4e35-8076-db47-ef9bf368f384",
+      "slug": "tejo",
+      "displayName": {
+        "en": "Tejo",
+        "vi": "Tejo"
+      },
+      "role": "initiator",
+      "roleName": {
+        "en": "Initiator",
+        "vi": "Khởi tranh"
+      },
+      "description": {
+        "en": "A veteran intelligence consultant from Colombia, Tejo’s ballistic guidance system pressures the enemy to relinquish their ground - or their lives. His targeted strikes keep opponents off balance and under his heel.",
+        "vi": "Một nhà tư vấn tình báo kỳ cựu từ Colombia, hệ thống đạn đạo tự tìm đường của Tejo gây áp lực buộc kẻ thù phải từ bỏ vị trí, hoặc mạng sống của chúng. Các đợt công kích nhắm mục tiêu của hắn khiến đối thủ mất cân bằng và bị kiểm soát hoàn toàn."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/b444168c-4e35-8076-db47-ef9bf368f384/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/b444168c-4e35-8076-db47-ef9bf368f384/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/b444168c-4e35-8076-db47-ef9bf368f384/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Guided Salvo",
+            "vi": "Guided Salvo"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/b444168c-4e35-8076-db47-ef9bf368f384/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Special Delivery",
+            "vi": "Special Delivery"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/b444168c-4e35-8076-db47-ef9bf368f384/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Armageddon",
+            "vi": "Armageddon"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/b444168c-4e35-8076-db47-ef9bf368f384/abilities/ultimate/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Stealth Drone",
+            "vi": "Stealth Drone"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/b444168c-4e35-8076-db47-ef9bf368f384/abilities/grenade/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "92eeef5d-43b5-1d4a-8d03-b3927a09034b",
+      "slug": "veto",
+      "displayName": {
+        "en": "Veto",
+        "vi": "Veto"
+      },
+      "role": "sentinel",
+      "roleName": {
+        "en": "Sentinel",
+        "vi": "Hộ vệ"
+      },
+      "description": {
+        "en": "Empowered by an unstoppable DNA mutation, Senegalese enforcer Veto defies the rules of engagement by nullifying his opponent's powers and technology. On Veto's battlefield, gunplay is your only guarantee.",
+        "vi": "Được cường hóa bởi đột biến gien bất khả kháng cự, Veto - người thi hành luật đến từ Senegal - thách thức mọi quy tắc chiến đấu bằng cách vô hiệu hóa toàn bộ sức mạnh và công nghệ của đối thủ. Trên chiến trường của Veto, kỹ năng bắn súng là thứ duy nhất giúp bạn toàn mạng."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/92eeef5d-43b5-1d4a-8d03-b3927a09034b/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/92eeef5d-43b5-1d4a-8d03-b3927a09034b/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/92eeef5d-43b5-1d4a-8d03-b3927a09034b/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Interceptor",
+            "vi": "Interceptor"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/92eeef5d-43b5-1d4a-8d03-b3927a09034b/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Crosscut",
+            "vi": "Crosscut"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/92eeef5d-43b5-1d4a-8d03-b3927a09034b/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Evolution",
+            "vi": "Evolution"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/92eeef5d-43b5-1d4a-8d03-b3927a09034b/abilities/ultimate/displayicon.png"
+        },
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Chokehold",
+            "vi": "Chokehold"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/92eeef5d-43b5-1d4a-8d03-b3927a09034b/abilities/ability1/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "707eab51-4836-f488-046a-cda6bf494859",
+      "slug": "viper",
+      "displayName": {
+        "en": "Viper",
+        "vi": "Viper"
+      },
+      "role": "controller",
+      "roleName": {
+        "en": "Controller",
+        "vi": "Kiểm soát"
+      },
+      "description": {
+        "en": "The American Chemist, Viper deploys an array of poisonous chemical devices to control the battlefield and choke the enemy's vision. If the toxins don't kill her prey, her mindgames surely will.",
+        "vi": "Là Chuyên Gia Hóa Học người Mỹ, Viper tung ra một loạt các thiết bị hóa học độc hại để kiểm soát chiến trường và bóp nghẹt tầm nhìn của đối thủ. Nếu kẻ địch không bị tiêu diệt bởi chất độc thì cũng mất mạng bởi tâm thuật của cô."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/707eab51-4836-f488-046a-cda6bf494859/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/707eab51-4836-f488-046a-cda6bf494859/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/707eab51-4836-f488-046a-cda6bf494859/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Poison Cloud",
+            "vi": "Poison Cloud"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/707eab51-4836-f488-046a-cda6bf494859/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Toxic Screen",
+            "vi": "Toxic Screen"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/707eab51-4836-f488-046a-cda6bf494859/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Snake Bite",
+            "vi": "Snake Bite"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/707eab51-4836-f488-046a-cda6bf494859/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Viper's Pit",
+            "vi": "Viper's Pit"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/707eab51-4836-f488-046a-cda6bf494859/abilities/ultimate/displayicon.png"
+        },
+        {
+          "slot": "passive",
+          "displayName": {
+            "en": "Toxin",
+            "vi": "Toxin"
+          },
+          "displayIcon": ""
+        }
+      ]
+    },
+    {
+      "id": "efba5359-4016-a1e5-7626-b1ae76895940",
+      "slug": "vyse",
+      "displayName": {
+        "en": "Vyse",
+        "vi": "Vyse"
+      },
+      "role": "sentinel",
+      "roleName": {
+        "en": "Sentinel",
+        "vi": "Hộ vệ"
+      },
+      "description": {
+        "en": "Metallic mastermind Vyse unleashes liquid metal to isolate, trap, and disarm her enemies. Through cunning and manipulation, she forces all who oppose her to fear the battlefield itself.",
+        "vi": "Vyse - bậc thầy kim loại, có khả năng sử dụng thép lỏng để cô lập, gài bẫy và khóa vũ khí của kẻ địch. Với chiến lược xảo quyết và kỹ năng kiểm soát tàng hình, cô sẽ khiến mọi kẻ địch phải nếm mùi kinh hãi của chiến trường."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/efba5359-4016-a1e5-7626-b1ae76895940/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/efba5359-4016-a1e5-7626-b1ae76895940/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/efba5359-4016-a1e5-7626-b1ae76895940/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Shear",
+            "vi": "Shear"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/efba5359-4016-a1e5-7626-b1ae76895940/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Arc Rose",
+            "vi": "Arc Rose"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/efba5359-4016-a1e5-7626-b1ae76895940/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Razorvine",
+            "vi": "Razorvine"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/efba5359-4016-a1e5-7626-b1ae76895940/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Steel Garden",
+            "vi": "Steel Garden"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/efba5359-4016-a1e5-7626-b1ae76895940/abilities/ultimate/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "df1cb487-4902-002e-5c17-d28e83e78588",
+      "slug": "waylay",
+      "displayName": {
+        "en": "Waylay",
+        "vi": "Waylay"
+      },
+      "role": "duelist",
+      "roleName": {
+        "en": "Duelist",
+        "vi": "Đối đầu"
+      },
+      "description": {
+        "en": "Thailand's prismatic radiant Waylay transforms into light itself as she darts across the battlefield, striking down her targets through shards of light before flitting back to safety, all in the blink of an eye.",
+        "vi": "Waylay - radiant với sức mạnh lăng kính tới từ Thái Lan - có khả năng biến thành ánh sáng để lao quanh chiến trường, tấn công mục tiêu bằng những mảnh vỡ ánh sáng trước khi bay trở lại nơi an toàn chỉ trong chớp mắt."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/df1cb487-4902-002e-5c17-d28e83e78588/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/df1cb487-4902-002e-5c17-d28e83e78588/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/df1cb487-4902-002e-5c17-d28e83e78588/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "Refract",
+            "vi": "Refract"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/df1cb487-4902-002e-5c17-d28e83e78588/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "Saturate",
+            "vi": "Saturate"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/df1cb487-4902-002e-5c17-d28e83e78588/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "Lightspeed",
+            "vi": "Lightspeed"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/df1cb487-4902-002e-5c17-d28e83e78588/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "Convergent Paths",
+            "vi": "Convergent Paths"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/df1cb487-4902-002e-5c17-d28e83e78588/abilities/ultimate/displayicon.png"
+        }
+      ]
+    },
+    {
+      "id": "7f94d92c-4234-0a36-9646-3a87eb8b5c89",
+      "slug": "yoru",
+      "displayName": {
+        "en": "Yoru",
+        "vi": "Yoru"
+      },
+      "role": "duelist",
+      "roleName": {
+        "en": "Duelist",
+        "vi": "Đối đầu"
+      },
+      "description": {
+        "en": "Japanese native Yoru rips holes straight through reality to infiltrate enemy lines unseen. Using deception and aggression in equal measure, he gets the drop on each target before they know where to look.",
+        "vi": "Đến từ Nhật Bản, Yoru có khả năng xé toang thực tại để xâm nhập vào hàng ngũ của địch mà không bị phát hiện. Với kỹ năng vừa đánh lừa vừa tấn công kẻ địch, con mồi của Yoru sẽ chẳng bao giờ biết được mình bị ai hạ gục."
+      },
+      "fullPortrait": "https://media.valorant-api.com/agents/7f94d92c-4234-0a36-9646-3a87eb8b5c89/fullportrait.png",
+      "displayIcon": "https://media.valorant-api.com/agents/7f94d92c-4234-0a36-9646-3a87eb8b5c89/displayicon.png",
+      "background": "https://media.valorant-api.com/agents/7f94d92c-4234-0a36-9646-3a87eb8b5c89/background.png",
+      "isPlayable": true,
+      "abilities": [
+        {
+          "slot": "grenade",
+          "displayName": {
+            "en": "FAKEOUT",
+            "vi": "FAKEOUT"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/7f94d92c-4234-0a36-9646-3a87eb8b5c89/abilities/grenade/displayicon.png"
+        },
+        {
+          "slot": "ability1",
+          "displayName": {
+            "en": "BLINDSIDE",
+            "vi": "BLINDSIDE"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/7f94d92c-4234-0a36-9646-3a87eb8b5c89/abilities/ability1/displayicon.png"
+        },
+        {
+          "slot": "ability2",
+          "displayName": {
+            "en": "GATECRASH",
+            "vi": "GATECRASH"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/7f94d92c-4234-0a36-9646-3a87eb8b5c89/abilities/ability2/displayicon.png"
+        },
+        {
+          "slot": "ultimate",
+          "displayName": {
+            "en": "DIMENSIONAL DRIFT",
+            "vi": "DIMENSIONAL DRIFT"
+          },
+          "displayIcon": "https://media.valorant-api.com/agents/7f94d92c-4234-0a36-9646-3a87eb8b5c89/abilities/ultimate/displayicon.png"
+        }
+      ]
+    }
+  ]
+}

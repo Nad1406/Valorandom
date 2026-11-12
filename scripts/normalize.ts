@@ -10,7 +10,6 @@ import type {
   WeaponCategory,
 } from '../src/types/valorant';
 
-/** Role display name (from API) -> internal role key. */
 const ROLE_BY_LABEL: Record<string, Role> = {
   duelist: 'duelist',
   initiator: 'initiator',
@@ -18,44 +17,29 @@ const ROLE_BY_LABEL: Record<string, Role> = {
   sentinel: 'sentinel',
 };
 
-const WEAPON_CATEGORY_BY_SUFFIX: Record<string, WeaponCategory> = {
-  sidearm: 'sidearm',
-  smg: 'smg',
-  shotgun: 'shotgun',
-  rifle: 'rifle',
-  sniper: 'sniper',
-  lmg: 'lmg',
+const CATEGORY_BY_KEY: Record<string, WeaponCategory> = {
+  sidearm: 'sidearm', pistols: 'sidearm',
+  smg: 'smg', smgs: 'smg',
+  shotgun: 'shotgun', shotguns: 'shotgun',
+  rifle: 'rifle', rifles: 'rifle',
+  sniper: 'sniper', 'sniper-rifles': 'sniper',
+  lmg: 'lmg', 'heavy-weapons': 'lmg',
   melee: 'melee',
 };
 
-/** Weapon slug fallbacks when `shopData.category` is missing (e.g. melee / removed weapons). */
 const CATEGORY_BY_SLUG: Record<string, WeaponCategory> = {
-  classic: 'sidearm',
-  shorty: 'sidearm',
-  frenzy: 'sidearm',
-  ghost: 'sidearm',
-  sheriff: 'sidearm',
-  stinger: 'smg',
-  spectre: 'smg',
-  bucky: 'shotgun',
-  judge: 'shotgun',
-  bulldog: 'rifle',
-  guardian: 'rifle',
-  phantom: 'rifle',
-  vandal: 'rifle',
-  marshal: 'sniper',
-  operator: 'sniper',
-  ares: 'lmg',
-  odin: 'lmg',
-  melee: 'melee',
+  classic: 'sidearm', shorty: 'sidearm', frenzy: 'sidearm',
+  ghost: 'sidearm', sheriff: 'sidearm', bandit: 'sidearm',
+  stinger: 'smg', spectre: 'smg',
+  bucky: 'shotgun', judge: 'shotgun',
+  bulldog: 'rifle', guardian: 'rifle', phantom: 'rifle', vandal: 'rifle', warden: 'rifle',
+  marshal: 'sniper', outlaw: 'sniper', operator: 'sniper',
+  ares: 'lmg', odin: 'lmg', melee: 'melee',
 };
 
 const ABILITY_SLOTS: Record<string, AbilitySlot> = {
-  ability1: 'ability1',
-  ability2: 'ability2',
-  grenade: 'grenade',
-  ultimate: 'ultimate',
-  passive: 'passive',
+  ability1: 'ability1', ability2: 'ability2',
+  grenade: 'grenade', ultimate: 'ultimate', passive: 'passive',
 };
 
 export function slugify(value: string): string {
@@ -90,10 +74,9 @@ export function normalizeWeaponCategory(
   slug: string,
 ): WeaponCategory {
   if (shopCategory) {
-    // e.g. "EEquippableCategory::Rifle"
-    const suffix = slugify(shopCategory.split('::').pop() ?? '');
-    const category = WEAPON_CATEGORY_BY_SUFFIX[suffix];
-    if (category) return category;
+    const rawKey = slugify(shopCategory.split('::').pop() ?? '');
+    const matched = CATEGORY_BY_KEY[rawKey];
+    if (matched) return matched;
   }
   const fallback = CATEGORY_BY_SLUG[slug];
   if (!fallback) {
@@ -103,8 +86,7 @@ export function normalizeWeaponCategory(
 }
 
 function normalizeAbilities(agent: ApiAgent): AgentAbility[] {
-  const abilities = agent.abilities ?? [];
-  return abilities
+  return (agent.abilities ?? [])
     .map((ability) => {
       const slot = ABILITY_SLOTS[slugify(ability.slot ?? '')];
       const name = ability.displayName?.trim();
@@ -142,13 +124,11 @@ export function parseSites(tacticalDescription: string | null | undefined): stri
   if (!tacticalDescription) return [];
   const found = new Set<string>();
   for (const match of tacticalDescription.matchAll(SITE_PATTERN)) {
-    const site = match[1];
-    if (site) found.add(site);
+    if (match[1]) found.add(match[1]);
   }
   if (found.size === 0) {
     for (const match of tacticalDescription.matchAll(/\b([ABC])\b/g)) {
-      const site = match[1];
-      if (site) found.add(site);
+      if (match[1]) found.add(match[1]);
     }
   }
   return [...found].sort();
@@ -203,8 +183,8 @@ export function normalizeWeapon(weapon: ApiWeapon, viWeapon: ApiWeapon | undefin
   };
 }
 
-function bySlug(a: { slug: string }, b: { slug: string }): number {
-  return a.slug.localeCompare(b.slug, 'en');
+function bySlugAndId(a: { id: string; slug: string }, b: { id: string; slug: string }): number {
+  return a.slug.localeCompare(b.slug, 'en') || a.id.localeCompare(b.id, 'en');
 }
 
 export function buildAgentFile(
@@ -217,7 +197,7 @@ export function buildAgentFile(
   const items = en
     .filter((agent) => agent.isPlayableCharacter !== false)
     .map((agent) => normalizeAgent(agent, viById.get(agent.uuid)))
-    .sort(bySlug);
+    .sort(bySlugAndId);
   return { meta: { generatedAt, dataVersion }, items };
 }
 
@@ -232,7 +212,7 @@ export function buildMapFile(
   const items = en
     .filter((map) => Boolean(map.displayName?.trim()))
     .map((map) => normalizeMap(map, viById.get(map.uuid), activeSlugs))
-    .sort(bySlug);
+    .sort(bySlugAndId);
   return { meta: { generatedAt, dataVersion }, items };
 }
 
@@ -246,6 +226,6 @@ export function buildWeaponFile(
   const items = en
     .map((weapon) => normalizeWeapon(weapon, viById.get(weapon.uuid)))
     .filter((weapon) => weapon.slug.length > 0)
-    .sort(bySlug);
+    .sort(bySlugAndId);
   return { meta: { generatedAt, dataVersion }, items };
 }
