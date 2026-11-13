@@ -1,116 +1,77 @@
 # VALORANDOM 🎯
 
-A high-performance, client-side static Single Page Application (SPA) designed for Valorant players to randomize **Agents**, **Maps**, **Weapons**, and coordinated **5-player Squads** without duplicate agent assignments.
+### _The Ultimate Randomized Companion for VALORANT_
 
-Operates **100% offline at runtime** with zero upstream network dependencies.
+Tired of endless debates over _"Who should I play?"_ or looking to spice up your 5-stack customs with chaotic, fun, and balanced team compositions?
 
----
-
-## ✨ Features
-
-- **Single Random**:
-  - Randomize Agents (with Role filter & customizable pool selection).
-  - Randomize Maps (Competitive & Unrated standard 5v5 map pool).
-  - Randomize Weapons (filtered by Category & Cost).
-  - Custom pool checkboxes: include or exclude specific items on the fly.
-- **Squad Random (5-player team)**:
-  - Generate 1–5 player team comps without duplicate agents.
-  - Role-constrained algorithm: narrow roles (Initiator, Sentinel, Controller, Duelist) resolved first before Flex slots.
-  - Per-slot Agent Locking: lock favorite agents and re-roll remaining teammates.
-  - Shareable Team Links: state serialized with base64url JSON via URL search params (`?s=...`), hydrated seamlessly.
-- **Localization (i18n)**:
-  - Full Vietnamese (`vi`) and English (`en`) support.
-  - Bilingual agent, map, and weapon descriptions.
-- **Accessibility & Design**:
-  - Dark futuristic Valorant aesthetic with high-contrast UI tokens.
-  - Full keyboard navigation and `aria-live` screen-reader announcements.
-  - Responsive across Mobile (360px), Tablet (768px), and Desktop (1440px).
+**VALORANDOM** is a modern, blazing-fast web application built specifically for VALORANT players. Whether you're running solo unrated games or queuing with your five-stack squad, VALORANDOM brings excitement and variety to every match.
 
 ---
 
-## 🛠️ Tech Stack
+## 🌟 Key Features
 
-- **Framework**: React 18 + TypeScript (Strict mode, no `any`)
-- **Bundler & Tooling**: Vite
-- **Styling**: Tailwind CSS
-- **Routing**: React Router (HashRouter for static hosting compatibility)
-- **Validation**: Zod (Static data & Share Link schemas)
-- **Testing**:
-  - Unit & Component: Vitest + React Testing Library (18 suites, 82 tests)
-  - End-to-End: Playwright (Chromium, 9 tests)
+### 🎲 1. Single Random: Agents, Maps & Weapons
 
----
+Never struggle with decision fatigue in the lobby again:
 
-## 🚀 Getting Started
+- **Agents**: Randomize any agent or narrow down by role (**Duelist**, **Initiator**, **Controller**, **Sentinel**). Displays ability kits, agent artwork, and key stats.
+- **Maps**: Randomize from official 5v5 map pools (Competitive & Unrated rotation: _Abyss, Bind, Corrode, Haven, Lotus, Summit, Sunset_, plus legacy maps).
+- **Weapons**: Randomize by weapon category (_Sidearms, SMGs, Shotguns, Rifles, Snipers, Heavy_) or set an economy threshold (_Max Creds_) for eco-round challenges.
 
-### Prerequisites
+### 🎛️ 2. Custom Pool Selector
 
-- Node.js >= 20.0.0
-- npm >= 10.0.0
+Take complete control over your random draws:
 
-### Installation
+- **Include or Exclude Anything**: Don't want to play certain agents or maps? Uncheck them in seconds.
+- **Batch Actions**: One-click **"Select All"** and **"Deselect All"** buttons let you craft custom pools on the fly.
+- **Real-Time Counter**: Always see exactly how many items are active in your current pool.
 
-```bash
-git clone https://github.com/your-username/valorandom.git
-cd valorandom
-npm install
-```
+### 👥 3. Squad Random (1 to 5 Players)
 
-### Development Server
+Assemble unique, exciting team comps with friends:
 
-```bash
-npm run dev
-```
+- **Zero Duplicates Guarantee**: Algorithms guarantee every player gets a distinct agent with zero overlaps.
+- **Role Priority Intelligence**: Fills strict role requests (_e.g., Initiator, Controller_) first before assigning Flex slots, ensuring viable compositions.
+- **Composition Warnings**: Helpful badges highlight if your squad is missing critical team utility.
 
-Visit `http://localhost:5173` in your browser.
+### 🔒 4. Slot Locking & Instant Re-roll
 
----
+- **Keep Your Mains**: If your teammate only plays Jett or Omen, lock their agent into their slot with a single click.
+- **Re-roll the Rest**: Hit _Re-roll_ anytime to shuffle the remaining teammates while keeping locked picks safe.
 
-## 📜 Available Scripts
+### 🔗 5. Instant Shareable Team Links
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Starts Vite local development server |
-| `npm run build` | Typechecks and builds production bundle in `dist/` |
-| `npm run preview` | Previews production build locally |
-| `npm run typecheck` | Runs `tsc --noEmit` in strict mode |
-| `npm run lint` | Lints codebase with ESLint |
-| `npm test` | Runs Vitest unit and component test suites |
-| `npm run test:e2e` | Runs Playwright end-to-end tests against preview server |
-| `npm run data:sync` | *(Dev only)* Fetches and syncs data from `valorant-api.com` |
-| `npm run data:validate`| Validates static data files against Zod schemas |
+- **One-Click Sharing**: Copy a compact share link directly to your clipboard.
+- **Seamless Hydration**: Send the link to your Discord party or friends. When they open it, their browser instantly loads your exact squad configuration, player names, and locked agents!
+
+### 🌐 6. Native Bilingual Experience (English & Vietnamese)
+
+- Instant language toggle (**EN ↔ VI**) without page reloads.
+- Official localized agent names, role descriptions, and game stats provided directly from official game data.
+
+### ⚡ 7. Lightning Fast & 100% Privacy Friendly
+
+- **Pure Client-Side**: No spinners, no tracking, no account required, and zero network lag.
+- **Responsive & Accessible**: Designed to look stunning on phones, tablets, and ultrawide desktop monitors, with full keyboard navigation support.
 
 ---
 
-## 📁 Project Structure
+## 🎮 How to Use
 
-```text
-src/
-├── components/          # Reusable UI primitives (Button, Card, Badge, Modal, etc.)
-│   ├── cards/           # AgentCard, MapCard, WeaponCard
-│   └── layout/          # PageShell, Header, Footer
-├── data/                # Static JSON datasets (agents, maps, weapons, meta)
-├── features/
-│   ├── random/          # Pure random logic: rng, singleRandom, filters
-│   ├── single/          # Single random UI (PoolSelector, etc.)
-│   └── squad/           # Squad algorithm, reducer, and UI components
-├── lib/                 # i18n engine, shareLink encoder/decoder, sound
-├── pages/               # SingleRandomPage, SquadRandomPage, NotFoundPage
-├── styles/              # Global CSS & Tailwind configuration
-└── types/               # Domain interfaces & TypeScript definitions
-```
+1. **Pick Solo**:
+   - Choose the **Single** tab.
+   - Switch between **Agent**, **Map**, or **Weapon**.
+   - Adjust your role or cost filters, tweak the **Custom Pool** checkboxes, and hit **Randomize**!
+2. **Roll with Your Squad**:
+   - Switch to the **Squad** tab.
+   - Add up to 5 player slots, set preferred player names and desired roles.
+   - Lock any must-have agents.
+   - Hit **Random Squad** and share the resulting link with your friends!
 
 ---
 
-## 🌐 Deployment
+## ⚖️ Legal Disclaimer
 
-VALORANDOM produces a static client-side bundle in `dist/` (< 120KB gzip). It can be deployed to any static hosting provider:
+**VALORANDOM** is a fan-made, non-commercial project and is not endorsed by, directly affiliated with, maintained, authorized, or sponsored by Riot Games, Inc.
 
-- **GitHub Pages**: Build output pushed to `gh-pages` branch.
-- **Cloudflare Pages / Vercel / Netlify**: Connect repository and set build command to `npm run build` with output directory `dist`.
-
----
-
-## ⚖️ Disclaimer
-
-VALORANDOM is a fan-made project and is not endorsed by, directly affiliated with, maintained, authorized, or sponsored by Riot Games, Inc. VALORANT and all related media are trademarks or registered trademarks of Riot Games, Inc.
+_VALORANT_ and all associated logos, characters, and assets are trademarks or registered trademarks of Riot Games, Inc.
