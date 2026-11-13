@@ -8,7 +8,8 @@ export const vi = {
   'lang.switch': 'Chuyển sang {lang}',
   'footer.dataFrom': 'Dữ liệu từ',
   'footer.updatedAt': 'Cập nhật: {date}',
-  'footer.disclaimer': 'VALORANDOM là dự án cộng đồng phi lợi nhuận, không liên kết hay tài trợ bởi Riot Games.',
+  'footer.createdBy': 'Phát triển bởi',
+  'footer.disclaimer': 'Không liên kết với Riot Games',
 
   // Common UI
   'common.loading': 'Đang tải...',

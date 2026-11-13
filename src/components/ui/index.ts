@@ -6,3 +6,4 @@ export * from './Toggle';
 export * from './Tooltip';
 export * from './EmptyState';
 export * from './Skeleton';
+export * from './BrandLogo';

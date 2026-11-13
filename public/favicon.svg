@@ -1,5 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#0B0F14"/>
-  <path d="M32 8 L52 20 V36 C52 47 43 54 32 57 C21 54 12 47 12 36 V20 Z" fill="none" stroke="#FF4655" stroke-width="3"/>
-  <path d="M24 38 L32 22 L40 38 L32 33 Z" fill="#00E5C0"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="10" fill="#0F1923"/>
+  <rect x="2" y="2" width="60" height="60" rx="8" stroke="#ECE8E1" stroke-opacity="0.2" stroke-width="1.5"/>
+  <!-- Crosshair tick marks -->
+  <line x1="32" y1="5" x2="32" y2="11" stroke="#FF4655" stroke-width="2"/>
+  <line x1="32" y1="53" x2="32" y2="59" stroke="#FF4655" stroke-width="2"/>
+  <line x1="5" y1="32" x2="11" y2="32" stroke="#FF4655" stroke-width="2"/>
+  <line x1="53" y1="32" x2="59" y2="32" stroke="#FF4655" stroke-width="2"/>
+  <!-- Angular Left Wing in Valorant Crimson -->
+  <polygon points="16,16 27,16 32,47 21,47" fill="#FF4655"/>
+  <!-- Angular Right Shard in Tactical Off-white -->
+  <polygon points="48,16 37,16 34,31 43,26" fill="#ECE8E1"/>
+  <!-- Tactical targeting pip -->
+  <circle cx="32" cy="32" r="2.2" fill="#FF4655"/>
 </svg>

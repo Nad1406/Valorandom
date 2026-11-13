@@ -3,7 +3,6 @@ import userEvent from '@testing-library/user-event';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import { LiveRegionProvider, useAnnounce } from '@/components/layout/LiveRegion';
-import { dataMeta } from '@/data';
 import { useReducedMotion } from '@/lib/hooks/useReducedMotion';
 import { I18nProvider } from '@/lib/i18n';
 import { routes } from '@/router';
@@ -34,8 +33,12 @@ describe('App Shell & Navigation (P1-06, P1-07, AC-01.1, AC-01.3)', () => {
     expect(singleNavLink).toBeInTheDocument();
     expect(squadNavLink).toBeInTheDocument();
 
-    // Footer metadata (freshness check)
-    expect(screen.getAllByText(new RegExp(dataMeta.generatedAt)).length).toBeGreaterThanOrEqual(1);
+    // Footer author link & disclaimer
+    expect(screen.getByRole('link', { name: /nad1406/i })).toHaveAttribute(
+      'href',
+      'https://github.com/Nad1406',
+    );
+    expect(screen.getByText(/riot games/i)).toBeInTheDocument();
 
     // Click navigation to Squad page
     await user.click(squadNavLink);

@@ -10,7 +10,8 @@ export const en: Record<TranslationKey, string> = {
   'lang.switch': 'Switch to {lang}',
   'footer.dataFrom': 'Data from',
   'footer.updatedAt': 'Updated on: {date}',
-  'footer.disclaimer': 'VALORANDOM is a fan project and is not endorsed by or affiliated with Riot Games.',
+  'footer.createdBy': 'Created by',
+  'footer.disclaimer': 'Not affiliated with Riot Games',
 
   // Common UI
   'common.loading': 'Loading...',
