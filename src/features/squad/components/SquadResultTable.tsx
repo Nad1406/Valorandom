@@ -37,20 +37,20 @@ export const SquadResultTable: React.FC<SquadResultTableProps> = ({
       {missingRoles.length > 0 && (
         <div
           role="status"
-          className="rounded-xl border border-amber-500/40 bg-amber-500/10 p-3.5 text-sm text-amber-300"
+          className="rounded-xl border border-amber-500/40 bg-amber-500/10 p-3.5 text-sm font-tactical tracking-wider text-amber-300"
         >
           ⚠️ {t('squad.warning.missingRoles', { roles: missingRoleNames })}
         </div>
       )}
 
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {slots.map((slot, idx) => {
           const agent = result.bySlot[slot.id];
           if (!agent) return null;
 
           const delayStyle = prefersReducedMotion
             ? undefined
-            : { animationDelay: `${idx * 60}ms` };
+            : { animationDelay: `${idx * 80}ms` };
 
           return (
             <SquadResultCard
@@ -85,23 +85,23 @@ const SquadResultCard: React.FC<SquadResultCardProps> = ({
 }) => {
   const { t } = useI18n();
   const agentName = localize(agent.displayName, lang);
-  const colorClass = ROLE_COLORS[agent.role] ?? 'bg-val-border text-val-text';
+  const colorClass = ROLE_COLORS[agent.role] ?? 'bg-white/10 text-white border-white/20';
   const isLocked = Boolean(slot.lockedAgentId);
 
   return (
     <div
       style={style}
-      className="flex flex-col justify-between overflow-hidden rounded-xl border border-val-border bg-val-surface p-4 transition-all animate-fadeIn hover:border-val-text/30"
+      className="relative flex flex-col justify-between overflow-hidden rounded-xl border border-white/15 bg-[#121C26] p-4 transition-all duration-300 animate-fade-up hover:border-val-red/60 shadow-tactical clip-corner-tl"
     >
       <div>
-        <div className="flex items-center justify-between gap-2 border-b border-val-border/60 pb-2">
-          <div className="truncate font-semibold text-val-text">
+        <div className="flex items-center justify-between gap-2 border-b border-white/10 pb-2">
+          <div className="truncate font-tactical text-sm font-bold tracking-wider text-val-offwhite uppercase">
             {slot.name || t('squad.slot.defaultName', { n: index + 1 })}
           </div>
           {isLocked && (
             <span
               title={t('squad.slot.lock')}
-              className="rounded bg-val-red/20 px-1.5 py-0.5 text-[10px] font-bold text-val-red"
+              className="rounded bg-val-red/20 px-1.5 py-0.5 font-tactical text-[10px] font-bold tracking-widest text-val-red border border-val-red/40"
             >
               🔒 LOCKED
             </span>
@@ -109,29 +109,33 @@ const SquadResultCard: React.FC<SquadResultCardProps> = ({
         </div>
 
         <div className="relative my-3 flex justify-center">
-          <img
-            src={agent.displayIcon}
-            alt={agentName}
-            className="h-20 w-20 rounded-lg object-cover ring-2 ring-val-border"
-          />
+          <div className="h-24 w-24 overflow-hidden rounded-full border-2 border-val-teal/60 shadow-glow-teal bg-[#18222D]">
+            <img
+              src={agent.fullPortrait || agent.displayIcon}
+              alt={agentName}
+              className="h-full w-full object-cover object-top"
+            />
+          </div>
         </div>
 
-        <div className="text-center font-bold text-val-text">{agentName}</div>
+        <div className="text-center font-display text-2xl font-black uppercase tracking-wider text-val-offwhite">
+          {agentName}
+        </div>
       </div>
 
-      <div className="mt-3 flex flex-col gap-1 border-t border-val-border/60 pt-2 text-xs">
+      <div className="mt-4 flex flex-col gap-1.5 border-t border-white/10 pt-2.5 text-xs font-tactical">
         <div className="flex items-center justify-between">
-          <span className="text-val-muted">{t('squad.assignedRole')}:</span>
+          <span className="text-white/50 tracking-wider uppercase">{t('squad.assignedRole')}:</span>
           <span
-            className={`rounded border px-2 py-0.5 font-medium capitalize ${colorClass}`}
+            className={`rounded border px-2 py-0.5 font-bold uppercase tracking-wider ${colorClass}`}
           >
             {t(`role.${agent.role}`)}
           </span>
         </div>
 
-        <div className="flex items-center justify-between text-[11px] text-val-muted">
-          <span>{t('squad.slot.role')}:</span>
-          <span>{t(`role.${slot.role}`)}</span>
+        <div className="flex items-center justify-between text-[11px] text-white/40">
+          <span className="tracking-wider uppercase">{t('squad.slot.role')}:</span>
+          <span className="uppercase font-bold text-white/70">{t(`role.${slot.role}`)}</span>
         </div>
       </div>
     </div>

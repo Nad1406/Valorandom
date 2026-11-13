@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { agents, localize } from '@/data';
 import { useI18n, type TranslationKey } from '@/lib/i18n';
 import type { SquadRole } from '@/types/squad';
@@ -48,7 +49,7 @@ export const AgentPickerPopover: React.FC<AgentPickerPopoverProps> = ({
 
   if (!isOpen) return null;
 
-  return (
+  const content = (
     <div
       role="dialog"
       aria-modal="true"
@@ -60,23 +61,7 @@ export const AgentPickerPopover: React.FC<AgentPickerPopoverProps> = ({
         className="flex max-h-[85vh] w-full max-w-lg flex-col rounded-xl border border-val-border bg-val-surface shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between border-b border-val-border p-4">
-          <div>
-            <h3 className="text-base font-bold text-val-text">{t('squad.pickAgent')}</h3>
-            <p className="text-xs text-val-muted">
-              {slotRole === 'flex' ? t('role.flex') : t(`role.${slotRole}` as TranslationKey)}
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="rounded-lg p-1 text-val-muted transition-colors hover:bg-val-border hover:text-val-text focus:outline-none focus:ring-1 focus:ring-val-red"
-            aria-label={t('common.close')}
-          >
-            ✕
-          </button>
-        </div>
-
+        <ModalHeader slotRole={slotRole} onClose={onClose} />
         <div className="p-3">
           <input
             type="text"
@@ -87,29 +72,80 @@ export const AgentPickerPopover: React.FC<AgentPickerPopoverProps> = ({
             className="w-full rounded-lg border border-val-border bg-val-bg px-3 py-2 text-sm text-val-text placeholder-val-muted/70 focus:border-val-red focus:outline-none focus:ring-1 focus:ring-val-red"
           />
         </div>
+        <AgentPickerGrid
+          agents={candidateAgents}
+          currentLockedAgentId={currentLockedAgentId}
+          lang={lang}
+          onSelect={(id) => {
+            onSelect(id);
+            onClose();
+          }}
+        />
+      </div>
+    </div>
+  );
 
-        <div className="overflow-y-auto p-3">
-          {candidateAgents.length === 0 ? (
-            <div className="py-8 text-center text-sm text-val-muted">
-              {t('squad.noAgentFound')}
-            </div>
-          ) : (
-            <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
-              {candidateAgents.map((agent) => (
-                <AgentPickerItem
-                  key={agent.id}
-                  agent={agent}
-                  isSelected={agent.id === currentLockedAgentId}
-                  displayName={localize(agent.displayName, lang)}
-                  onSelect={() => {
-                    onSelect(agent.id);
-                    onClose();
-                  }}
-                />
-              ))}
-            </div>
-          )}
-        </div>
+  return typeof document !== 'undefined' ? createPortal(content, document.body) : content;
+};
+
+interface ModalHeaderProps {
+  slotRole: SquadRole;
+  onClose: () => void;
+}
+
+const ModalHeader: React.FC<ModalHeaderProps> = ({ slotRole, onClose }) => {
+  const { t } = useI18n();
+  const roleLabel = slotRole === 'flex' ? t('role.flex') : t(`role.${slotRole}` as TranslationKey);
+
+  return (
+    <div className="flex items-center justify-between border-b border-val-border p-4">
+      <div>
+        <h3 className="text-base font-bold text-val-text">{t('squad.pickAgent')}</h3>
+        <p className="text-xs text-val-muted">{roleLabel}</p>
+      </div>
+      <button
+        type="button"
+        onClick={onClose}
+        className="rounded-lg p-1 text-val-muted transition-colors hover:bg-val-border hover:text-val-text focus:outline-none focus:ring-1 focus:ring-val-red"
+        aria-label={t('common.close')}
+      >
+        ✕
+      </button>
+    </div>
+  );
+};
+
+interface AgentPickerGridProps {
+  agents: Agent[];
+  currentLockedAgentId?: string;
+  lang: 'vi' | 'en';
+  onSelect: (id: string) => void;
+}
+
+const AgentPickerGrid: React.FC<AgentPickerGridProps> = ({
+  agents: candidateAgents,
+  currentLockedAgentId,
+  lang,
+  onSelect,
+}) => {
+  const { t } = useI18n();
+
+  if (candidateAgents.length === 0) {
+    return <div className="py-8 text-center text-sm text-val-muted">{t('squad.noAgentFound')}</div>;
+  }
+
+  return (
+    <div className="overflow-y-auto p-3">
+      <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
+        {candidateAgents.map((agent) => (
+          <AgentPickerItem
+            key={agent.id}
+            agent={agent}
+            isSelected={agent.id === currentLockedAgentId}
+            displayName={localize(agent.displayName, lang)}
+            onSelect={() => onSelect(agent.id)}
+          />
+        ))}
       </div>
     </div>
   );

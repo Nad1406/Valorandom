@@ -2,46 +2,57 @@ import React, { useState } from 'react';
 import { AgentCard } from '@/components/cards/AgentCard';
 import { MapCard } from '@/components/cards/MapCard';
 import { WeaponCard } from '@/components/cards/WeaponCard';
-import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { agents, maps, weapons } from '@/data';
 import { createDefaultRng } from '@/features/random/rng';
 import { randomCombo, type ComboResult } from '@/features/random/singleRandom';
+import { useReducedMotion } from '@/lib/hooks/useReducedMotion';
 import { useI18n } from '@/lib/i18n';
 
 export const ComboPanel: React.FC = () => {
   const { t } = useI18n();
+  const prefersReducedMotion = useReducedMotion();
   const [combo, setCombo] = useState<ComboResult | null>(null);
   const [isSpinning, setIsSpinning] = useState(false);
 
   const handleRollCombo = () => {
+    if (prefersReducedMotion) {
+      const rng = createDefaultRng();
+      const res = randomCombo(agents, maps, weapons, rng);
+      setCombo(res);
+      return;
+    }
+
     setIsSpinning(true);
     setTimeout(() => {
       const rng = createDefaultRng();
       const res = randomCombo(agents, maps, weapons, rng);
       setCombo(res);
       setIsSpinning(false);
-    }, 400);
+    }, 600);
   };
 
   return (
     <div className="flex flex-col gap-6">
-      <Card className="p-6 bg-surface-hi flex flex-col sm:flex-row items-center justify-between gap-4">
+      <Card className="p-6 bg-[#0F1923]/90 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 clip-corner-tl">
         <div>
-          <h2 className="font-display font-bold text-xl uppercase tracking-wider text-ink">
+          <h2 className="font-display font-black text-3xl uppercase tracking-wider text-val-offwhite">
             {t('single.combo.title')}
           </h2>
-          <p className="text-sm text-ink-muted mt-1">{t('single.combo.desc')}</p>
+          <p className="text-xs text-white/50 mt-1 font-sans">{t('single.combo.desc')}</p>
         </div>
-        <Button
-          variant="primary"
-          size="lg"
-          loading={isSpinning}
+        <button
+          type="button"
+          disabled={isSpinning}
           onClick={handleRollCombo}
-          className="w-full sm:w-auto"
+          className="val-btn-match w-full sm:w-auto text-base tracking-widest clip-tactical"
         >
-          {combo ? t('common.reroll') : t('single.combo.button')}
-        </Button>
+          {isSpinning
+            ? t('single.scanning')
+            : combo
+              ? t('common.reroll')
+              : t('single.combo.button')}
+        </button>
       </Card>
 
       {combo ? (

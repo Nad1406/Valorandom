@@ -8,6 +8,7 @@ import { agents, localize } from '@/data';
 import { filterAgents, type AgentFilter } from '@/features/random/filters';
 import { useRandomizer } from '@/features/random/useRandomizer';
 import { PoolSelector, type PoolItem } from '@/features/single';
+import { TacticalRollOverlay } from '@/features/single/TacticalRollOverlay';
 import { useI18n } from '@/lib/i18n';
 import type { Agent, Role } from '@/types/valorant';
 import { ROLES } from '@/types/valorant';
@@ -26,7 +27,7 @@ export const AgentPanel: React.FC = () => {
 
   const pool = useMemo(() => filterAgents(agents, filter), [filter]);
 
-  const { result, isAnimating, randomize } = useRandomizer<Agent>({
+  const { result, isAnimating, rollingItem, randomize } = useRandomizer<Agent>({
     onAnnounce: (agent) =>
       t('a11y.resultAnnounce', { name: localize(agent.displayName, lang) }),
   });
@@ -56,29 +57,87 @@ export const AgentPanel: React.FC = () => {
     [lang],
   );
 
+  const displayedAgent = rollingItem ?? result ?? (pool.length > 0 ? pool[0] : null);
+
   return (
-    <div className="flex flex-col gap-6">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <Card className="p-6 flex flex-col gap-4 lg:col-span-1 bg-surface-hi">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      {/* Left: Hero Showcase Stage (~60%) */}
+      <div className="lg:col-span-7 xl:col-span-7 flex flex-col items-center justify-center gap-6">
+        <div className="relative w-full max-w-lg min-h-[460px] flex items-center justify-center">
+          <TacticalRollOverlay
+            isRolling={isAnimating}
+            currentItemName={rollingItem ? localize(rollingItem.displayName, lang) : undefined}
+          />
+
+          {isPoolEmpty ? (
+            <Card className="w-full p-8 border-white/10 bg-[#0F1923]/90">
+              <EmptyState
+                title={t('common.empty')}
+                message={
+                  selectedIds.size === 0
+                    ? t('single.pool.emptyHint')
+                    : t('single.empty.hint')
+                }
+                action={
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={selectedIds.size === 0 ? selectAll : () => setSelectedRole('all')}
+                  >
+                    {selectedIds.size === 0 ? t('single.pool.selectAll') : t('common.clearFilter')}
+                  </Button>
+                }
+              />
+            </Card>
+          ) : displayedAgent ? (
+            <div
+              className={`w-full transition-all duration-300 ${
+                isAnimating ? 'opacity-40 scale-95' : 'opacity-100 scale-100 animate-fade-up'
+              }`}
+            >
+              <AgentCard agent={displayedAgent} highlight={Boolean(result)} />
+            </div>
+          ) : null}
+        </div>
+
+        {/* Tactical "FIND MATCH" Style Random Button */}
+        <button
+          type="button"
+          disabled={isPoolEmpty || isAnimating}
+          onClick={() => randomize(pool)}
+          className="val-btn-match w-full max-w-md text-base sm:text-lg clip-tactical"
+        >
+          {isAnimating
+            ? t('single.scanning')
+            : result
+              ? t('common.reroll')
+              : t('common.random')}
+        </button>
+      </div>
+
+      {/* Right: Control & Pool Sidebar (~40%) */}
+      <div className="lg:col-span-5 xl:col-span-5 flex flex-col gap-5">
+        <Card className="p-5 flex flex-col gap-4 border-white/10 bg-[#0F1923]/90 clip-corner-tl">
           <div>
-            <h2 className="font-display font-bold text-lg uppercase tracking-wider text-ink">
+            <h2 className="font-display font-black text-2xl uppercase tracking-wider text-val-offwhite">
               {t('single.agent.title')}
             </h2>
-            <p className="text-sm text-ink-muted mt-1">{t('single.agent.desc')}</p>
+            <p className="text-xs text-white/50 mt-1 font-sans">{t('single.agent.desc')}</p>
           </div>
 
-          <div className="flex flex-col gap-2 pt-2">
-            <label className="text-xs font-display tracking-wider uppercase text-ink-muted">
-              {t('single.filter.role')}
+          {/* Role Filter */}
+          <div className="flex flex-col gap-2 pt-2 border-t border-white/10">
+            <label className="text-xs font-tactical font-bold tracking-widest uppercase text-white/60">
+              // {t('single.filter.role')}
             </label>
             <div className="flex flex-wrap gap-1.5" role="group" aria-label={t('single.filter.role')}>
               <button
                 type="button"
                 onClick={() => setSelectedRole('all')}
-                className={`px-3 py-1.5 text-xs font-display rounded-md border transition-all ${
+                className={`px-3 py-1.5 text-xs font-tactical font-bold tracking-wider uppercase rounded border transition-all ${
                   selectedRole === 'all'
-                    ? 'bg-ink text-bg-base border-ink font-bold'
-                    : 'bg-surface text-ink-muted border-line hover:border-ink-muted'
+                    ? 'bg-val-offwhite text-[#0F1923] border-val-offwhite'
+                    : 'bg-white/5 text-white/60 border-white/10 hover:border-white/30'
                 }`}
               >
                 {t('common.all')}
@@ -88,10 +147,10 @@ export const AgentPanel: React.FC = () => {
                   key={role}
                   type="button"
                   onClick={() => setSelectedRole(role)}
-                  className={`px-3 py-1.5 text-xs font-display uppercase rounded-md border transition-all ${
+                  className={`px-3 py-1.5 text-xs font-tactical font-bold tracking-wider uppercase rounded border transition-all ${
                     selectedRole === role
-                      ? 'bg-val-red text-white border-val-red font-bold shadow-glow'
-                      : 'bg-surface text-ink-muted border-line hover:border-ink-muted'
+                      ? 'bg-val-red text-white border-val-red shadow-glow'
+                      : 'bg-white/5 text-white/60 border-white/10 hover:border-white/30'
                   }`}
                 >
                   {t(`role.${role}` as const)}
@@ -100,69 +159,24 @@ export const AgentPanel: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-between text-xs text-ink-muted pt-3 border-t border-line">
+          {/* Pool Count & Status */}
+          <div className="flex items-center justify-between text-xs font-tactical tracking-wider text-white/60 pt-3 border-t border-white/10">
             <span>{t('single.filter.poolCount', { count: pool.length })}</span>
             <Badge variant={selectedRole !== 'all' ? selectedRole : 'default'}>
               {selectedRole === 'all' ? t('common.all') : selectedRole}
             </Badge>
           </div>
-
-          <div className="mt-auto pt-4">
-            <Button
-              variant="primary"
-              size="lg"
-              loading={isAnimating}
-              disabled={isPoolEmpty}
-              onClick={() => randomize(pool)}
-              className="w-full"
-            >
-              {result ? t('common.reroll') : t('common.random')}
-            </Button>
-          </div>
         </Card>
 
-        <div className="lg:col-span-2 flex items-center justify-center min-h-[340px]">
-          {isPoolEmpty ? (
-            <EmptyState
-              title={t('common.empty')}
-              message={
-                selectedIds.size === 0
-                  ? t('single.pool.emptyHint')
-                  : t('single.empty.hint')
-              }
-              action={
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={selectedIds.size === 0 ? selectAll : () => setSelectedRole('all')}
-                >
-                  {selectedIds.size === 0 ? t('single.pool.selectAll') : t('common.clearFilter')}
-                </Button>
-              }
-            />
-          ) : result ? (
-            <div
-              className={`w-full max-w-md transition-all duration-300 ${
-                isAnimating ? 'opacity-50 scale-95' : 'opacity-100 scale-100 animate-fade-up'
-              }`}
-            >
-              <AgentCard agent={result} highlight />
-            </div>
-          ) : (
-            <div className="w-full max-w-md opacity-40 hover:opacity-75 transition-opacity">
-              <AgentCard agent={pool[0]!} />
-            </div>
-          )}
-        </div>
+        {/* Custom Pool Selector */}
+        <PoolSelector
+          items={poolItems}
+          selectedIds={selectedIds}
+          onToggleItem={toggleItem}
+          onSelectAll={selectAll}
+          onDeselectAll={deselectAll}
+        />
       </div>
-
-      <PoolSelector
-        items={poolItems}
-        selectedIds={selectedIds}
-        onToggleItem={toggleItem}
-        onSelectAll={selectAll}
-        onDeselectAll={deselectAll}
-      />
     </div>
   );
 };

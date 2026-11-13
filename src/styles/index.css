@@ -9,9 +9,13 @@
 
   html,
   body {
-    background-color: #0B0F14;
-    color: #E8EDF2;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #0F1923;
+    background-image: 
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 70, 85, 0.12), transparent 70%),
+      linear-gradient(135deg, rgba(15, 25, 35, 0.95) 0%, rgba(11, 17, 24, 0.98) 100%);
+    background-attachment: fixed;
+    color: #ECE8E1;
+    font-family: 'Be Vietnam Pro', 'Inter', system-ui, -apple-system, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -22,4 +26,87 @@
     background-color: #FF4655;
     color: #FFFFFF;
   }
+}
+
+@layer utilities {
+  /* Tactical angular clip paths */
+  .clip-corner-tl {
+    clip-path: polygon(14px 0, 100% 0, 100% 100%, 0 100%, 0 14px);
+  }
+
+  .clip-corner-br {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+  }
+
+  .clip-tactical {
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  }
+
+  /* Thin tactical scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(15, 25, 35, 0.6);
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #FF4655;
+  }
+
+  /* Giant watermark using CSS content to avoid DOM text duplication */
+  .val-watermark::before {
+    content: attr(data-watermark);
+  }
+}
+
+/* Valorant "FIND MATCH" double-border button styling */
+.val-btn-match {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background-color: #FF4655;
+  color: #FFFFFF;
+  padding: 0.75rem 2rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 20px rgba(255, 70, 85, 0.4);
+}
+
+.val-btn-match::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 1px solid rgba(255, 70, 85, 0.5);
+  pointer-events: none;
+  transition: inset 0.2s ease, border-color 0.2s ease;
+}
+
+.val-btn-match:hover:not(:disabled) {
+  background-color: #FF5E6C;
+  transform: translateY(-1px);
+  box-shadow: 0 0 28px rgba(255, 70, 85, 0.65);
+}
+
+.val-btn-match:hover:not(:disabled)::before {
+  inset: -6px;
+  border-color: #FF4655;
+}
+
+.val-btn-match:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.val-btn-match:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
 }

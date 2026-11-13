@@ -62,6 +62,8 @@ export const vi = {
   'single.pool.deselectAll': 'Bỏ chọn tất cả',
   'single.pool.selectedCount': 'Đã chọn: {count}/{total}',
   'single.pool.emptyHint': 'Tất cả mục đã bị bỏ chọn. Hãy chọn ít nhất 1 mục để random.',
+  'single.scanning': 'ĐANG QUÉT MỤC TIÊU...',
+  'single.targetAcquired': 'ĐÃ KHÓA MỤC TIÊU',
 
   // Squad Random
   'squad.title': 'Random đội hình 5 người',

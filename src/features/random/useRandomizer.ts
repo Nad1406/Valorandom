@@ -9,37 +9,56 @@ export interface UseRandomizerOptions<T> {
 }
 
 export function useRandomizer<T>(options?: UseRandomizerOptions<T>) {
-  const durationMs = options?.durationMs ?? 400;
+  const durationMs = options?.durationMs ?? 1100;
   const prefersReducedMotion = useReducedMotion();
   const announce = useAnnounce();
 
   const [result, setResult] = useState<T | null>(null);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  const [rollingItem, setRollingItem] = useState<T | null>(null);
+
   const lastPoolRef = useRef<readonly T[]>([]);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const clearTimers = useCallback(() => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    if (intervalRef.current) clearInterval(intervalRef.current);
+  }, []);
 
   const randomize = useCallback(
     (pool: readonly T[], customRng?: Rng) => {
       lastPoolRef.current = pool;
       if (pool.length === 0) {
         setResult(null);
+        setRollingItem(null);
+        setIsAnimating(false);
         return;
       }
 
       const rng = customRng ?? createDefaultRng();
       const picked = pick(pool, rng);
 
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-      }
+      clearTimers();
 
       if (prefersReducedMotion) {
         setResult(picked);
+        setRollingItem(null);
         setIsAnimating(false);
       } else {
         setIsAnimating(true);
+
+        // Roulette preview tick
+        intervalRef.current = setInterval(() => {
+          const randIndex = Math.floor(Math.random() * pool.length);
+          setRollingItem(pool[randIndex] ?? null);
+        }, 75);
+
+        // Final result resolve
         timerRef.current = setTimeout(() => {
+          if (intervalRef.current) clearInterval(intervalRef.current);
           setResult(picked);
+          setRollingItem(null);
           setIsAnimating(false);
         }, durationMs);
       }
@@ -48,7 +67,7 @@ export function useRandomizer<T>(options?: UseRandomizerOptions<T>) {
         announce(options.onAnnounce(picked));
       }
     },
-    [durationMs, prefersReducedMotion, announce, options],
+    [clearTimers, durationMs, prefersReducedMotion, announce, options],
   );
 
   const reroll = useCallback(
@@ -59,14 +78,16 @@ export function useRandomizer<T>(options?: UseRandomizerOptions<T>) {
   );
 
   const clear = useCallback(() => {
-    if (timerRef.current) clearTimeout(timerRef.current);
+    clearTimers();
     setResult(null);
+    setRollingItem(null);
     setIsAnimating(false);
-  }, []);
+  }, [clearTimers]);
 
   return {
     result,
     isAnimating,
+    rollingItem,
     randomize,
     reroll,
     clear,

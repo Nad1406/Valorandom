@@ -64,6 +64,8 @@ export const en: Record<TranslationKey, string> = {
   'single.pool.deselectAll': 'Deselect All',
   'single.pool.selectedCount': 'Selected: {count}/{total}',
   'single.pool.emptyHint': 'All items are deselected. Please select at least 1 item to randomize.',
+  'single.scanning': 'SCANNING TARGET...',
+  'single.targetAcquired': 'TARGET ACQUIRED',
 
   // Squad Random
   'squad.title': '5-Player Squad Randomizer',
