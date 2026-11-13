@@ -22,7 +22,7 @@ Never struggle with decision fatigue in the lobby again:
 
 Take complete control over your random draws:
 
-- **Include or Exclude Anything**: Don't want to play certain agents or maps? Uncheck them in seconds.
+- **Include or Exclude Anything**: Don't want to play certain agegit statusnts or maps? Uncheck them in seconds.
 - **Batch Actions**: One-click **"Select All"** and **"Deselect All"** buttons let you craft custom pools on the fly.
 - **Real-Time Counter**: Always see exactly how many items are active in your current pool.
 
