@@ -44,12 +44,7 @@ export function formatSquadShareText({
   result,
   lang,
 }: FormatSquadShareTextParams): string {
-  const isVi = lang === 'vi';
-  const title = isVi
-    ? '🎮 VALORANDOM — Đội hình 5 người'
-    : '🎮 VALORANDOM — 5-Player Squad';
-
   const bodyLines = result ? formatResultLines(result, slots, lang) : formatConfigLines(slots, lang);
 
-  return [title, ...bodyLines].join('\n');
+  return bodyLines.join('\n');
 }

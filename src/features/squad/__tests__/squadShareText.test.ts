@@ -37,21 +37,21 @@ describe('formatSquadShareText', () => {
     abilities: [],
   };
 
-  it('formats squad configuration without url when result is null', () => {
+  it('formats squad configuration without title and without url when result is null', () => {
     const text = formatSquadShareText({
       slots: dummySlots,
       result: null,
       lang: 'vi',
     });
 
-    expect(text).toContain('VALORANDOM');
+    expect(text).not.toContain('VALORANDOM');
     expect(text).toContain('1. Ace — Role: duelist');
     expect(text).toContain('2. Người chơi 2 — Role: flex');
     expect(text).not.toContain('http');
     expect(text).not.toContain('🔗');
   });
 
-  it('formats randomized squad result with assigned agents and no url', () => {
+  it('formats randomized squad result with assigned agents and no title or url', () => {
     const result: SquadResult = {
       bySlot: {
         'slot-1': mockAgentJett,
@@ -67,7 +67,7 @@ describe('formatSquadShareText', () => {
       lang: 'vi',
     });
 
-    expect(text).toContain('VALORANDOM — Đội hình 5 người');
+    expect(text).not.toContain('VALORANDOM');
     expect(text).toContain('1. Ace ➔ Jett (Đối Đầu) 🔒');
     expect(text).toContain('2. Người chơi 2 ➔ Omen (Kiểm Soát)');
     expect(text).not.toContain('http');
