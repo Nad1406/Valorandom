@@ -80,7 +80,10 @@ export const SquadRandomPage: React.FC = () => {
 
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-bold uppercase tracking-wider text-val-muted">
+          <span
+            data-testid="slot-count"
+            className="text-xs font-bold uppercase tracking-wider text-val-muted"
+          >
             {slots.length} / 5 Slots
           </span>
           <Button

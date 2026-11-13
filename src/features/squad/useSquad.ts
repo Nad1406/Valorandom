@@ -60,11 +60,11 @@ export function useSquad() {
   const shareSquad = useCallback(async () => {
     try {
       const code = encodeShareState(state.slots);
-      const url = `${window.location.origin}${window.location.pathname}?s=${code}`;
+      setSearchParams({ s: code }, { replace: true });
+      const url = `${window.location.origin}${window.location.pathname}#/squad?s=${code}`;
       await navigator.clipboard.writeText(url);
       setToastMessage(t('squad.copied'));
       setTimeout(() => setToastMessage(null), 3000);
-      setSearchParams({ s: code }, { replace: true });
     } catch {
       setErrorMessage(t('squad.error.unknown'));
     }
