@@ -63,11 +63,9 @@ export function useSquad() {
     try {
       const code = encodeShareState(state.slots);
       setSearchParams({ s: code }, { replace: true });
-      const url = `${window.location.origin}${window.location.pathname}#/squad?s=${code}`;
       const text = formatSquadShareText({
         slots: state.slots,
         result,
-        shareUrl: url,
         lang,
       });
       const ok = await copyToClipboard(text);

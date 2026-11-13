@@ -5,7 +5,6 @@ import type { Lang } from '@/types/valorant';
 interface FormatSquadShareTextParams {
   slots: readonly SquadSlot[];
   result: SquadResult | null;
-  shareUrl: string;
   lang: Lang;
 }
 
@@ -43,7 +42,6 @@ function formatConfigLines(slots: readonly SquadSlot[], lang: Lang): string[] {
 export function formatSquadShareText({
   slots,
   result,
-  shareUrl,
   lang,
 }: FormatSquadShareTextParams): string {
   const isVi = lang === 'vi';
@@ -53,5 +51,5 @@ export function formatSquadShareText({
 
   const bodyLines = result ? formatResultLines(result, slots, lang) : formatConfigLines(slots, lang);
 
-  return [title, ...bodyLines, '', `🔗 ${shareUrl}`].join('\n');
+  return [title, ...bodyLines].join('\n');
 }
