@@ -4,7 +4,7 @@ A clean, fast, and tactical randomizer for VALORANT players.
 
 VALORANDOM helps you and your teammates quickly pick agents, maps, weapons, or assemble balanced 5-player squad compositions without decision fatigue or agent conflicts.
 
-Live App: [https://valorandom-nine.vercel.app/](https://valorandom-nine.vercel.app/)
+Live App: [https://valorandom-nine.vercel.app/](https://valorandom-vn.vercel.app/)
 
 ---
 
@@ -31,7 +31,7 @@ Created by [Nad1406](https://github.com/Nad1406).
 
 VALORANDOM giúp bạn và bạn bè nhanh chóng chọn đặc vụ, bản đồ, vũ khí hoặc thiết lập đội hình 5 người ăn ý mà không mất thời gian đắn đo hay lo trùng lặp trong sảnh chờ.
 
-Trải nghiệm trực tuyến: [https://valorandom-nine.vercel.app/](https://valorandom-nine.vercel.app/)
+Trải nghiệm trực tuyến: [https://valorandom-nine.vercel.app/](https://valorandom-vn.vercel.app/)
 
 ---
 
