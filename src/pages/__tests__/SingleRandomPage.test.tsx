@@ -49,7 +49,9 @@ describe('SingleRandomPage Integration (P2-04, P2-05, P2-06, P2-07, P2-08, AC-10
     const mapTabBtn = screen.getByRole('tab', { name: /bản đồ/i });
     fireEvent.click(mapTabBtn);
 
-    expect(screen.getByRole('switch', { name: /chỉ map trong rotation/i })).toBeInTheDocument();
+    const switchEl = screen.getByRole('switch', { name: /chỉ map trong rotation/i });
+    expect(switchEl).toBeInTheDocument();
+    fireEvent.click(switchEl);
 
     const randomBtn = screen.getByRole('button', { name: /^random$/i });
     fireEvent.click(randomBtn);

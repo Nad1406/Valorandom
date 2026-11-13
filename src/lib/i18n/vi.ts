@@ -57,6 +57,11 @@ export const vi = {
   'single.combo.title': 'Combo trận đấu',
   'single.combo.desc': 'Random đồng thời Agent + Map + Weapon',
   'single.combo.button': 'Random Combo',
+  'single.pool.title': 'Kho mục khả dụng',
+  'single.pool.selectAll': 'Chọn tất cả',
+  'single.pool.deselectAll': 'Bỏ chọn tất cả',
+  'single.pool.selectedCount': 'Đã chọn: {count}/{total}',
+  'single.pool.emptyHint': 'Tất cả mục đã bị bỏ chọn. Hãy chọn ít nhất 1 mục để random.',
 
   // Squad Random
   'squad.title': 'Random đội hình 5 người',

@@ -57,27 +57,35 @@ export const AgentCard: React.FC<AgentCardProps> = ({
         </h3>
 
         {agent.abilities.length > 0 && (
-          <div className="mt-3 flex items-center gap-2 pt-2 border-t border-line/60">
-            {agent.abilities.map((ability) => (
-              <div
-                key={ability.slot}
-                className="w-7 h-7 rounded bg-surface border border-line flex items-center justify-center p-1"
-                title={localize(ability.displayName, lang)}
-              >
-                {ability.displayIcon ? (
-                  <img
-                    src={ability.displayIcon}
-                    alt={localize(ability.displayName, lang)}
-                    loading="lazy"
-                    className="w-full h-full object-contain filter invert opacity-80"
-                  />
-                ) : (
-                  <span className="text-[10px] text-ink-muted uppercase">
-                    {ability.slot[0]}
-                  </span>
-                )}
-              </div>
-            ))}
+          <div className="mt-3 flex flex-col gap-1.5 pt-2.5 border-t border-line/60">
+            <span className="text-[11px] font-display uppercase tracking-wider text-ink-muted">
+              Abilities
+            </span>
+            <div className="flex items-center gap-2">
+              {agent.abilities.map((ability) => {
+                const abilityName = localize(ability.displayName, lang);
+                return (
+                  <div
+                    key={ability.slot}
+                    className="group relative flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 bg-[#1E2633] p-1.5 shadow-sm transition-all hover:border-val-teal/60 hover:bg-[#263143]"
+                    title={`${ability.slot.toUpperCase()}: ${abilityName}`}
+                  >
+                    {ability.displayIcon ? (
+                      <img
+                        src={ability.displayIcon}
+                        alt={abilityName}
+                        loading="lazy"
+                        className="h-full w-full object-contain opacity-95 brightness-110 drop-shadow transition-transform group-hover:scale-110"
+                      />
+                    ) : (
+                      <span className="text-xs font-bold uppercase text-white/90">
+                        {ability.slot[0]}
+                      </span>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         )}
       </div>

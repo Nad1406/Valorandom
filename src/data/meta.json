@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-12",
-  "dataVersion": "valorant-api-2026-11-12",
+  "generatedAt": "2026-11-13",
+  "dataVersion": "valorant-api-2026-11-13",
   "source": "valorant-api.com",
   "counts": {
     "agents": 30,
-    "maps": 27,
+    "maps": 13,
     "weapons": 21
   }
 }

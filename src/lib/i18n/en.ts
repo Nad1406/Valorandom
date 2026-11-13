@@ -59,6 +59,11 @@ export const en: Record<TranslationKey, string> = {
   'single.combo.title': 'Match Combo',
   'single.combo.desc': 'Randomize Agent + Map + Weapon simultaneously',
   'single.combo.button': 'Random Combo',
+  'single.pool.title': 'Available Items Pool',
+  'single.pool.selectAll': 'Select All',
+  'single.pool.deselectAll': 'Deselect All',
+  'single.pool.selectedCount': 'Selected: {count}/{total}',
+  'single.pool.emptyHint': 'All items are deselected. Please select at least 1 item to randomize.',
 
   // Squad Random
   'squad.title': '5-Player Squad Randomizer',

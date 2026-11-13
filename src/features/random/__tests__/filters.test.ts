@@ -66,4 +66,20 @@ describe('Filters Pure Logic (AC-10.2, AC-11.1, AC-12.1, AC-04.1)', () => {
     expect(Array.isArray(emptyWeapons)).toBe(true);
     expect(emptyWeapons).toHaveLength(0);
   });
+
+  it('Phase 3.5: filters items by selectedIds and excludedIds', () => {
+    const selectedAgentIds = [agents[0]!.id, agents[1]!.id];
+    const filteredAgents = filterAgents(agents, { selectedIds: selectedAgentIds });
+    expect(filteredAgents).toHaveLength(2);
+    expect(filteredAgents.map((a) => a.id)).toEqual(selectedAgentIds);
+
+    const excludedMapId = maps[0]!.id;
+    const filteredMaps = filterMaps(maps, { excludedIds: [excludedMapId] });
+    expect(filteredMaps).toHaveLength(maps.length - 1);
+    expect(filteredMaps.some((m) => m.id === excludedMapId)).toBe(false);
+
+    // Empty selectedIds yields empty pool
+    const emptyPool = filterWeapons(weapons, { selectedIds: [] });
+    expect(emptyPool).toHaveLength(0);
+  });
 });

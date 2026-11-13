@@ -201,6 +201,11 @@ export function buildAgentFile(
   return { meta: { generatedAt, dataVersion }, items };
 }
 
+export const STANDARD_5V5_MAP_SLUGS: ReadonlySet<string> = new Set([
+  'abyss', 'ascent', 'bind', 'breeze', 'corrode', 'fracture',
+  'haven', 'icebox', 'lotus', 'pearl', 'split', 'summit', 'sunset',
+]);
+
 export function buildMapFile(
   en: ApiMap[],
   vi: ApiMap[],
@@ -210,7 +215,11 @@ export function buildMapFile(
 ) {
   const viById = new Map(vi.map((item) => [item.uuid, item]));
   const items = en
-    .filter((map) => Boolean(map.displayName?.trim()))
+    .filter((map) => {
+      if (!map.displayName?.trim()) return false;
+      const slug = slugify(map.displayName);
+      return STANDARD_5V5_MAP_SLUGS.has(slug);
+    })
     .map((map) => normalizeMap(map, viById.get(map.uuid), activeSlugs))
     .sort(bySlugAndId);
   return { meta: { generatedAt, dataVersion }, items };

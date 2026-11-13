@@ -68,4 +68,19 @@ describe('Single Random Pure Engine (AC-10.1, AC-10.3, AC-13.2, Ft-14)', () => {
     expect(maps).toContainEqual(combo.map);
     expect(weapons).toContainEqual(combo.weapon);
   });
+
+  it('Phase 3.5: randomizes strictly from customized selectedIds pool and returns null when empty', () => {
+    const rng = mulberry32(12345);
+    const chosenTwo = [agents[0]!, agents[1]!];
+    const filtered = filterAgents(agents, {
+      selectedIds: chosenTwo.map((a) => a.id),
+    });
+
+    const result = randomAgent(filtered, rng);
+    expect(result).not.toBeNull();
+    expect(chosenTwo.map((a) => a.id)).toContain(result?.id);
+
+    const emptyResult = randomAgent([], rng);
+    expect(emptyResult).toBeNull();
+  });
 });
