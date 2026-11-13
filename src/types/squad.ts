@@ -1,5 +1,7 @@
 import type { Agent, SlotRole } from '@/types/valorant';
 
+export type SquadRole = SlotRole;
+
 export interface SquadSlot {
   id: string;
   name: string;
