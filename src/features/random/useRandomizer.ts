@@ -40,32 +40,28 @@ export function useRandomizer<T>(options?: UseRandomizerOptions<T>) {
       const picked = pick(pool, rng);
 
       clearTimers();
+      setIsAnimating(true);
 
       if (prefersReducedMotion) {
-        setResult(picked);
-        setRollingItem(null);
-        setIsAnimating(false);
+        setRollingItem(picked);
       } else {
-        setIsAnimating(true);
-
         // Roulette preview tick
         intervalRef.current = setInterval(() => {
           const randIndex = Math.floor(Math.random() * pool.length);
           setRollingItem(pool[randIndex] ?? null);
         }, 75);
-
-        // Final result resolve
-        timerRef.current = setTimeout(() => {
-          if (intervalRef.current) clearInterval(intervalRef.current);
-          setResult(picked);
-          setRollingItem(null);
-          setIsAnimating(false);
-        }, durationMs);
       }
 
-      if (picked && options?.onAnnounce) {
-        announce(options.onAnnounce(picked));
-      }
+      // Final result resolve
+      timerRef.current = setTimeout(() => {
+        if (intervalRef.current) clearInterval(intervalRef.current);
+        setResult(picked);
+        setRollingItem(null);
+        setIsAnimating(false);
+        if (picked && options?.onAnnounce) {
+          announce(options.onAnnounce(picked));
+        }
+      }, durationMs);
     },
     [clearTimers, durationMs, prefersReducedMotion, announce, options],
   );

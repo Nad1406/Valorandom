@@ -72,11 +72,6 @@ export const WeaponPanel: React.FC = () => {
       {/* Left: Hero Showcase Stage (~60%) */}
       <div className="lg:col-span-7 xl:col-span-7 flex flex-col items-center justify-center gap-6">
         <div className="relative w-full max-w-lg min-h-[460px] flex items-center justify-center">
-          <TacticalRollOverlay
-            isRolling={isAnimating}
-            currentItemName={rollingItem ? localize(rollingItem.displayName, lang) : undefined}
-          />
-
           {isPoolEmpty ? (
             <Card className="w-full p-8 border-white/10 bg-[#0F1923]/90">
               <EmptyState
@@ -113,6 +108,11 @@ export const WeaponPanel: React.FC = () => {
               <WeaponCard weapon={displayedWeapon} highlight={Boolean(result)} />
             </div>
           ) : null}
+
+          <TacticalRollOverlay
+            isRolling={isAnimating}
+            currentItemName={rollingItem ? localize(rollingItem.displayName, lang) : undefined}
+          />
         </div>
 
         {/* Tactical "FIND MATCH" Style Random Button */}

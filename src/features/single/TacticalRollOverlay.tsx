@@ -18,7 +18,7 @@ export const TacticalRollOverlay: React.FC<TacticalRollOverlayProps> = ({
     <div
       role="status"
       aria-live="polite"
-      className="absolute inset-0 z-30 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-val-red/60 bg-[#0F1923]/85 p-6 backdrop-blur-md shadow-glow"
+      className="absolute inset-0 z-50 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-val-red/60 bg-[#0F1923]/90 p-6 backdrop-blur-md shadow-glow pointer-events-none"
     >
       {/* High-speed scanline beam */}
       <div className="pointer-events-none absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-val-red to-transparent opacity-90 shadow-glow animate-scan" />
@@ -41,8 +41,8 @@ export const TacticalRollOverlay: React.FC<TacticalRollOverlayProps> = ({
 
       {/* Scanning status banner */}
       <div className="flex items-center gap-2">
-        <span className="h-2 w-2 rounded-full bg-val-red animate-ping" />
-        <span className="font-tactical text-xs tracking-widest text-val-red uppercase font-bold">
+        <span className="h-2.5 w-2.5 rounded-full bg-val-red animate-ping" />
+        <span className="font-tactical text-sm sm:text-base tracking-widest text-val-red uppercase font-bold animate-pulse">
           {t('single.scanning')}
         </span>
       </div>
@@ -50,14 +50,14 @@ export const TacticalRollOverlay: React.FC<TacticalRollOverlayProps> = ({
       {/* Candidate item preview text */}
       {currentItemName && (
         <div className="mt-3 text-center">
-          <p className="font-display text-4xl sm:text-5xl font-black uppercase tracking-wider text-val-offwhite transition-transform duration-75">
+          <p className="font-display text-4xl sm:text-6xl font-black uppercase tracking-wider text-val-offwhite transition-transform duration-75">
             {currentItemName}
           </p>
         </div>
       )}
 
       {/* Bottom tactical code */}
-      <div className="mt-4 font-mono text-[10px] tracking-widest text-white/30 uppercase">
+      <div className="mt-4 font-mono text-[11px] tracking-widest text-white/40 uppercase">
         // SYSTEM_LOCK // ROULETTE_ACTIVE
       </div>
     </div>
