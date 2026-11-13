@@ -112,13 +112,13 @@ describe('SquadRandomPage Component Tests (Phase 3)', () => {
   it('AC-24.1: sharing squad copies URL to clipboard and displays toast', async () => {
     renderSquadPage();
 
-    const shareBtn = screen.getByRole('button', { name: /chia sẻ link/i });
+    const shareBtn = screen.getByRole('button', { name: /chia sẻ/i });
     await act(async () => {
       fireEvent.click(shareBtn);
     });
 
     expect(navigator.clipboard.writeText).toHaveBeenCalled();
-    expect(screen.getByText(/đã sao chép link!/i)).toBeInTheDocument();
+    expect(screen.getByText(/đã sao chép/i)).toBeInTheDocument();
   });
 
   it('AC-04.2 & P3-08: displays error banner when URL has invalid share query', () => {

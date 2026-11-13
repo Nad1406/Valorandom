@@ -80,8 +80,8 @@ export const en: Record<TranslationKey, string> = {
   'squad.reset': 'Reset',
   'squad.randomSquad': 'Randomize Squad',
   'squad.rerollSquad': 'Re-roll Squad',
-  'squad.share': 'Share Link',
-  'squad.copied': 'Link copied!',
+  'squad.share': 'Share (Copy text)',
+  'squad.copied': 'Squad copied to clipboard!',
   'squad.allLocked': 'All slots are locked',
   'squad.pickAgent': 'Select agent to lock',
   'squad.searchAgent': 'Search agent...',
@@ -99,6 +99,7 @@ export const en: Record<TranslationKey, string> = {
   'squad.error.insufficientRole': 'Need {needed} {role} but only {count} available',
   'squad.error.exhaustedPool': 'Not enough available agents to complete squad',
   'squad.error.unknown': 'An error occurred while generating the squad',
+  'squad.error.copyFailed': 'Failed to copy to clipboard',
   'squad.error.invalidLink': 'Invalid or expired share link',
 
   // Stats & Card labels

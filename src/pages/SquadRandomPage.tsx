@@ -46,7 +46,7 @@ export const SquadRandomPage: React.FC = () => {
             {t('squad.reset')}
           </Button>
           <Button variant="secondary" size="sm" onClick={shareSquad}>
-            🔗 {t('squad.share')}
+            📋 {t('squad.share')}
           </Button>
         </div>
       </div>

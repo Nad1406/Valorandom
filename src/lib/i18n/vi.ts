@@ -78,8 +78,8 @@ export const vi = {
   'squad.reset': 'Đặt lại',
   'squad.randomSquad': 'Random đội hình',
   'squad.rerollSquad': 'Random lại',
-  'squad.share': 'Chia sẻ link',
-  'squad.copied': 'Đã sao chép link!',
+  'squad.share': 'Chia sẻ (Copy text)',
+  'squad.copied': 'Đã sao chép đội hình vào bộ nhớ tạm!',
   'squad.allLocked': 'Tất cả slot đã được khóa',
   'squad.pickAgent': 'Chọn đặc vụ để khóa',
   'squad.searchAgent': 'Tìm kiếm đặc vụ...',
@@ -97,6 +97,7 @@ export const vi = {
   'squad.error.insufficientRole': 'Cần {needed} {role} nhưng chỉ có {count} khả dụng',
   'squad.error.exhaustedPool': 'Không còn đủ đặc vụ khả dụng để hoàn tất đội hình',
   'squad.error.unknown': 'Có lỗi xảy ra khi tạo đội hình',
+  'squad.error.copyFailed': 'Không thể sao chép vào bộ nhớ tạm',
   'squad.error.invalidLink': 'Link chia sẻ không hợp lệ hoặc đã hết hạn',
 
   // Stats & Card labels

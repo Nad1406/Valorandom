@@ -2,15 +2,17 @@ import { useCallback, useEffect, useMemo, useReducer, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { agentById, agents } from '@/data';
 import { createDefaultRng } from '@/features/random/rng';
+import { copyToClipboard } from '@/lib/clipboard';
 import { useI18n } from '@/lib/i18n';
 import { decodeShareState, encodeShareState } from '@/lib/shareLink';
 import type { SquadResult, SquadRole } from '@/types/squad';
 import { getSquadErrorMessage } from './squadErrorHelper';
 import { squadRandom } from './squadRandom';
 import { initialSquadState, squadReducer } from './squadReducer';
+import { formatSquadShareText } from './squadShareText';
 
 export function useSquad() {
-  const { t } = useI18n();
+  const { lang, t } = useI18n();
   const [searchParams, setSearchParams] = useSearchParams();
   const [state, dispatch] = useReducer(squadReducer, initialSquadState);
 
@@ -62,13 +64,23 @@ export function useSquad() {
       const code = encodeShareState(state.slots);
       setSearchParams({ s: code }, { replace: true });
       const url = `${window.location.origin}${window.location.pathname}#/squad?s=${code}`;
-      await navigator.clipboard.writeText(url);
-      setToastMessage(t('squad.copied'));
-      setTimeout(() => setToastMessage(null), 3000);
+      const text = formatSquadShareText({
+        slots: state.slots,
+        result,
+        shareUrl: url,
+        lang,
+      });
+      const ok = await copyToClipboard(text);
+      if (ok) {
+        setToastMessage(t('squad.copied'));
+        setTimeout(() => setToastMessage(null), 3000);
+      } else {
+        setErrorMessage(t('squad.error.copyFailed'));
+      }
     } catch {
       setErrorMessage(t('squad.error.unknown'));
     }
-  }, [state.slots, setSearchParams, t]);
+  }, [state.slots, result, lang, setSearchParams, t]);
 
   const updateName = useCallback((id: string, name: string) => {
     dispatch({ type: 'SET_NAME', id, name });

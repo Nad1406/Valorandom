@@ -45,12 +45,12 @@ test.describe('E2E: Squad Random, Lock & Share Link (P4-02, AC-21.1, AC-23.x, AC
     await expect(page.getByText('🔒 LOCKED')).toBeVisible();
     await expect(page.getByText(/đội hình đã random/i)).toBeVisible();
 
-    // 5. Click Share Link
-    const shareBtn = page.getByRole('button', { name: /chia sẻ link/i });
+    // 5. Click Share Button
+    const shareBtn = page.getByRole('button', { name: /chia sẻ/i });
     await shareBtn.click();
 
     // Toast displays
-    await expect(page.getByText(/đã sao chép link!/i)).toBeVisible();
+    await expect(page.getByText(/đã sao chép/i)).toBeVisible();
 
     // URL contains ?s=
     await expect(page).toHaveURL(/\?s=/);
