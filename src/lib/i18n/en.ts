@@ -8,6 +8,8 @@ export const en: Record<TranslationKey, string> = {
   'nav.squad': 'Squad Random',
   'lang.current': 'English',
   'lang.switch': 'Switch to {lang}',
+  'sound.mute': 'Mute sound',
+  'sound.unmute': 'Unmute sound',
   'footer.dataFrom': 'Data from',
   'footer.updatedAt': 'Updated on: {date}',
   'footer.createdBy': 'Created by',

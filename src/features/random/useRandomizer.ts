@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 import { createDefaultRng, pick, type Rng } from './rng';
 import { useAnnounce } from '@/components/layout/LiveRegion';
+import { playDataTick, playTargetLock } from '@/lib/audio/tacticalSound';
 import { useReducedMotion } from '@/lib/hooks/useReducedMotion';
 
 export interface UseRandomizerOptions<T> {
@@ -41,14 +42,20 @@ export function useRandomizer<T>(options?: UseRandomizerOptions<T>) {
 
       clearTimers();
       setIsAnimating(true);
+      const startTime = Date.now();
 
       if (prefersReducedMotion) {
         setRollingItem(picked);
+        playDataTick(0.5);
       } else {
+        playDataTick(0);
         // Roulette preview tick
         intervalRef.current = setInterval(() => {
+          const elapsed = Date.now() - startTime;
+          const progress = Math.min(1, elapsed / durationMs);
           const randIndex = Math.floor(Math.random() * pool.length);
           setRollingItem(pool[randIndex] ?? null);
+          playDataTick(progress);
         }, 75);
       }
 
@@ -58,6 +65,7 @@ export function useRandomizer<T>(options?: UseRandomizerOptions<T>) {
         setResult(picked);
         setRollingItem(null);
         setIsAnimating(false);
+        playTargetLock();
         if (picked && options?.onAnnounce) {
           announce(options.onAnnounce(picked));
         }

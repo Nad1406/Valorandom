@@ -6,6 +6,8 @@ export const vi = {
   'nav.squad': 'Random đội',
   'lang.current': 'Tiếng Việt',
   'lang.switch': 'Chuyển sang {lang}',
+  'sound.mute': 'Tắt âm thanh',
+  'sound.unmute': 'Bật âm thanh',
   'footer.dataFrom': 'Dữ liệu từ',
   'footer.updatedAt': 'Cập nhật: {date}',
   'footer.createdBy': 'Phát triển bởi',
