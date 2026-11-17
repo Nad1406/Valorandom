@@ -54,6 +54,26 @@ describe('App Shell & Navigation (P1-06, P1-07, AC-01.1, AC-01.3)', () => {
     ).toBeInTheDocument();
   });
 
+  it('renders sound toggle button with valid SVG icon and toggles mute state', async () => {
+    window.localStorage.clear();
+    const user = userEvent.setup();
+    renderAppAt('/');
+
+    const muteBtn = screen.getByRole('button', { name: /tắt âm thanh/i });
+    expect(muteBtn).toBeInTheDocument();
+    const activeIcon = muteBtn.querySelector('svg.lucide');
+    expect(activeIcon).toBeInTheDocument();
+    expect(activeIcon?.querySelectorAll('path').length).toBe(3);
+
+    await user.click(muteBtn);
+
+    const unmuteBtn = screen.getByRole('button', { name: /bật âm thanh/i });
+    expect(unmuteBtn).toBeInTheDocument();
+    const mutedIcon = unmuteBtn.querySelector('svg.lucide');
+    expect(mutedIcon).toBeInTheDocument();
+    expect(mutedIcon?.querySelectorAll('line').length).toBe(2);
+  });
+
   it('useReducedMotion detects prefers-reduced-motion media query', () => {
     const { result } = renderHook(() => useReducedMotion());
     expect(typeof result.current).toBe('boolean');
