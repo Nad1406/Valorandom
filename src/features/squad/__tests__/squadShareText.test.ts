@@ -45,8 +45,9 @@ describe('formatSquadShareText', () => {
     });
 
     expect(text).not.toContain('VALORANDOM');
-    expect(text).toContain('1. Ace — Role: duelist');
-    expect(text).toContain('2. Người chơi 2 — Role: flex');
+    expect(text).toContain('Ace — Role: duelist');
+    expect(text).toContain('Người chơi 2 — Role: flex');
+    expect(text).not.toMatch(/^\d+\./m);
     expect(text).not.toContain('http');
     expect(text).not.toContain('🔗');
   });
@@ -68,8 +69,9 @@ describe('formatSquadShareText', () => {
     });
 
     expect(text).not.toContain('VALORANDOM');
-    expect(text).toContain('1. Ace ➔ Jett (Đối Đầu) 🔒');
-    expect(text).toContain('2. Người chơi 2 ➔ Omen (Kiểm Soát)');
+    expect(text).toContain('Ace ➔ Jett (Đối Đầu) 🔒');
+    expect(text).toContain('Người chơi 2 ➔ Omen (Kiểm Soát)');
+    expect(text).not.toMatch(/^\d+\./m);
     expect(text).not.toContain('http');
     expect(text).not.toContain('🔗');
   });

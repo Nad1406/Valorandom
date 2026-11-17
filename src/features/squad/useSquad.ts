@@ -6,15 +6,18 @@ import { copyToClipboard } from '@/lib/clipboard';
 import { useI18n } from '@/lib/i18n';
 import { decodeShareState, encodeShareState } from '@/lib/shareLink';
 import type { SquadResult, SquadRole } from '@/types/squad';
+import { getMissingRoles, resolveSlotDisplay } from './slotDisplay';
 import { getSquadErrorMessage } from './squadErrorHelper';
 import { squadRandom } from './squadRandom';
 import { initialSquadState, squadReducer } from './squadReducer';
 import { formatSquadShareText } from './squadShareText';
+import { useSquadRoll } from './useSquadRoll';
 
 export function useSquad() {
   const { lang, t } = useI18n();
   const [searchParams, setSearchParams] = useSearchParams();
   const [state, dispatch] = useReducer(squadReducer, initialSquadState);
+  const { rollingBySlot, isRolling, startRoll, cancelRoll } = useSquadRoll();
 
   const [result, setResult] = useState<SquadResult | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -44,30 +47,42 @@ export function useSquad() {
     return state.slots.map((s) => s.lockedAgentId).filter((id): id is string => Boolean(id));
   }, [state.slots]);
 
+  const slotDisplays = useMemo(() => {
+    return state.slots.map((slot) =>
+      resolveSlotDisplay({
+        slot,
+        result,
+        rollingBySlot,
+        lockedAgentIds: allLockedAgentIds,
+        agentLookup: agentById,
+      }),
+    );
+  }, [state.slots, result, rollingBySlot, allLockedAgentIds]);
+
+  const missingRoles = useMemo(() => getMissingRoles(result), [result]);
+
   const randomize = useCallback(() => {
-    if (allLocked) return;
+    if (allLocked || isRolling) return;
     try {
       const rng = createDefaultRng();
       const res = squadRandom({ slots: state.slots, pool: agents, rng });
-      setResult(res);
-      dispatch({ type: 'SET_RESULT', result: res });
       setErrorMessage(null);
+      startRoll(state.slots, () => {
+        setResult(res);
+        dispatch({ type: 'SET_RESULT', result: res });
+      });
     } catch (err) {
       setErrorMessage(getSquadErrorMessage(err, t));
       setResult(null);
       dispatch({ type: 'SET_RESULT', result: null });
     }
-  }, [allLocked, state.slots, t]);
+  }, [allLocked, isRolling, state.slots, startRoll, t]);
 
   const shareSquad = useCallback(async () => {
     try {
       const code = encodeShareState(state.slots);
       setSearchParams({ s: code }, { replace: true });
-      const text = formatSquadShareText({
-        slots: state.slots,
-        result,
-        lang,
-      });
+      const text = formatSquadShareText({ slots: state.slots, result, lang });
       const ok = await copyToClipboard(text);
       if (ok) {
         setToastMessage(t('squad.copied'));
@@ -105,16 +120,20 @@ export function useSquad() {
   }, []);
 
   const resetSquad = useCallback(() => {
+    cancelRoll();
     dispatch({ type: 'RESET' });
     setResult(null);
     setErrorMessage(null);
     setWarningMessage(null);
     setSearchParams({}, { replace: true });
-  }, [setSearchParams]);
+  }, [cancelRoll, setSearchParams]);
 
   return {
     slots: state.slots,
+    slotDisplays,
     result,
+    missingRoles,
+    isRolling,
     errorMessage,
     warningMessage,
     toastMessage,

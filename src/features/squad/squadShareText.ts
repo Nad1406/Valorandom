@@ -17,14 +17,15 @@ function formatResultLines(
   return slots.map((slot, idx) => {
     const fallbackName = isVi ? `Người chơi ${idx + 1}` : `Player ${idx + 1}`;
     const playerName = slot.name.trim() || fallbackName;
-    const assignedAgent = result.bySlot[slot.id];
+    const lockedAgent = slot.lockedAgentId ? agentById.get(slot.lockedAgentId) : undefined;
+    const assignedAgent = lockedAgent ?? result.bySlot[slot.id];
     if (!assignedAgent) {
-      return `${idx + 1}. ${playerName} — Role: ${slot.role}`;
+      return `${playerName} — Role: ${slot.role}`;
     }
     const agentName = localize(assignedAgent.displayName, lang);
     const roleName = localize(assignedAgent.roleName, lang);
     const lockBadge = slot.lockedAgentId ? ' 🔒' : '';
-    return `${idx + 1}. ${playerName} ➔ ${agentName} (${roleName})${lockBadge}`;
+    return `${playerName} ➔ ${agentName} (${roleName})${lockBadge}`;
   });
 }
 
@@ -35,7 +36,7 @@ function formatConfigLines(slots: readonly SquadSlot[], lang: Lang): string[] {
     const playerName = slot.name.trim() || fallbackName;
     const lockedAgent = slot.lockedAgentId ? agentById.get(slot.lockedAgentId) : undefined;
     const lockedText = lockedAgent ? ` [🔒 ${localize(lockedAgent.displayName, lang)}]` : '';
-    return `${idx + 1}. ${playerName} — Role: ${slot.role}${lockedText}`;
+    return `${playerName} — Role: ${slot.role}${lockedText}`;
   });
 }
 

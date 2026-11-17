@@ -118,6 +118,10 @@ Format: **AC-<Ft>.<n>**. Mỗi AC phải map tới ít nhất 1 test tự độn
 - **AC-21.2 (trọng tâm)** Với slot role cố định (≠ Flex), agent được gán có `agent.role === slot.role`
   trong 100% số lần, kể cả khi 5 slot cùng 1 role (nếu pool không đủ → AC-25.1).
 - **AC-21.3** Agent đang bị lock ở slot khác không bao giờ được gán cho slot không lock.
+- **AC-21.4** Kết quả random hiển thị **trực tiếp trong khung banner của từng slot** (ảnh, tên, badge
+  role thực tế); không có khối danh sách kết quả riêng bên dưới.
+- **AC-21.5** Khi bấm Random/Re-roll, các slot **chưa lock** chạy hiệu ứng quét ngay trong banner
+  (nhanh dần chậm), slot đã lock giữ nguyên; `prefers-reduced-motion` → ra kết quả ngay (0ms).
 - **AC-22.1 (trọng tâm)** Team có `k` slot Flex và `m` role còn thiếu (còn agent khả dụng): số slot
   Flex được gán vào role thuộc tập thiếu bằng `min(k, m)`. Test trên ≥ 20 tổ hợp (k, m).
 - **AC-22.2** Slots `[Duelist, Flex, Flex, Flex, Flex]` → 3 slot Flex kế tiếp thuộc 3 role khác nhau
@@ -126,6 +130,8 @@ Format: **AC-<Ft>.<n>**. Mỗi AC phải map tới ít nhất 1 test tự độn
 - **AC-23.2** Lock 5/5 slot → bấm Random trả về state cũ, UI báo "Tất cả slot đã lock".
 - **AC-23.3** Hai slot không thể lock cùng một agent: khi slot 1 đã lock X thì X bị loại khỏi danh
   sách chọn agent của slot khác.
+- **AC-23.4** Banner đã có kết quả có nút Khóa/Mở khóa; khóa agent vừa random → Re-roll giữ nguyên
+  agent đó, banner hiển thị trạng thái khóa (viền nổi bật + icon ổ khóa).
 - **AC-24.1** Bấm Share → clipboard có URL chứa state; mở URL ở tab mới → khôi phục đúng số slot,
   tên, role, lock và kết quả agent.
 - **AC-24.2** `decode(encode(state))` deep-equal `state` với 50 state sinh tự động, bao gồm tên có

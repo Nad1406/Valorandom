@@ -6,10 +6,19 @@ export {
   type SquadState,
 } from './squadReducer';
 export { getSquadErrorMessage } from './squadErrorHelper';
+export {
+  resolveSlotDisplay,
+  buildRollingFrame,
+  getMissingRoles,
+  rollTickDelay,
+  type SlotDisplay,
+} from './slotDisplay';
 export { useSquad } from './useSquad';
+export { useSquadRoll } from './useSquadRoll';
 export {
   RoleSelect,
   AgentPickerPopover,
   SquadSlotRow,
-  SquadResultTable,
+  SquadSlotStage,
+  SquadMissingRolesAlert,
 } from './components';

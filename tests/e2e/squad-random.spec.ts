@@ -14,13 +14,7 @@ test.describe('E2E: Squad Random, Lock & Share Link (P4-02, AC-21.1, AC-23.x, AC
     const slotCount = page.getByTestId('slot-count');
     await expect(slotCount).toHaveText(/5 \/ 5 slots/i);
 
-    // 2. Click Random Squad -> renders results
-    const randomBtn = page.getByRole('button', { name: /random đội hình/i });
-    await randomBtn.click();
-
-    await expect(page.getByText(/đội hình đã random/i)).toBeVisible();
-
-    // 3. Lock agent Jett on slot 1
+    // 2. Lock agent Jett on slot 1 before rolling
     const lockBtns = page.getByRole('button', { name: /\+ khóa đặc vụ/i });
     await lockBtns.first().click();
 
@@ -38,12 +32,23 @@ test.describe('E2E: Squad Random, Lock & Share Link (P4-02, AC-21.1, AC-23.x, AC
     // Slot 1 now has locked Jett
     await expect(page.getByRole('button', { name: /mở khóa jett/i })).toBeVisible();
 
+    // 3. Random Squad -> results render in-place inside the 5 banners
+    const randomBtn = page.getByRole('button', { name: /random đội hình/i });
+    await randomBtn.click();
+
+    const rolledAgents = page.locator('[data-testid="slot-agent"][data-state="rolled"]');
+    await expect(rolledAgents).toHaveCount(4);
+    await expect(page.locator('[data-testid="slot-agent"][data-state="locked"]')).toHaveCount(1);
+    await expect(page.getByText(/đội hình đã random/i)).toHaveCount(0);
+
     // 4. Reroll squad -> Jett remains locked with badge
     const rerollBtn = page.getByRole('button', { name: /random lại/i });
+    await expect(rerollBtn).toBeEnabled();
     await rerollBtn.click();
 
-    await expect(page.getByText('🔒 LOCKED')).toBeVisible();
-    await expect(page.getByText(/đội hình đã random/i)).toBeVisible();
+    await expect(rolledAgents).toHaveCount(4);
+    await expect(page.getByText('Đã khóa')).toBeVisible();
+    await expect(page.getByRole('button', { name: /mở khóa jett/i })).toBeVisible();
 
     // 5. Click Share Button
     const shareBtn = page.getByRole('button', { name: /chia sẻ/i });

@@ -2,13 +2,14 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { agents } from '@/data';
 import { I18nProvider } from '@/lib/i18n';
-import type { SquadResult, SquadSlot } from '@/types/squad';
+import type { SquadSlot } from '@/types/squad';
 import {
   AgentPickerPopover,
   RoleSelect,
-  SquadResultTable,
+  SquadMissingRolesAlert,
   SquadSlotRow,
-} from '../components';
+  SquadSlotStage,
+} from '@/features/squad/components';
 
 describe('Squad UI Subcomponents (P3-03, P3-04, P3-05, Ft-26)', () => {
   it('RoleSelect triggers onChange when selecting a different role', () => {
@@ -92,6 +93,7 @@ describe('Squad UI Subcomponents (P3-03, P3-04, P3-05, Ft-26)', () => {
         <SquadSlotRow
           slot={slot}
           index={0}
+          display={{ kind: 'empty' }}
           allLockedAgentIds={[]}
           canRemove={true}
           onUpdateName={handleUpdateName}
@@ -112,35 +114,69 @@ describe('Squad UI Subcomponents (P3-03, P3-04, P3-05, Ft-26)', () => {
     expect(handleRemove).toHaveBeenCalledWith('slot-1');
   });
 
-  it('SquadResultTable renders results and warns when core roles are missing (Ft-26)', () => {
-    const omen = agents.find((a) => a.slug === 'omen')!;
-    const viper = agents.find((a) => a.slug === 'viper')!;
-
-    const result: SquadResult = {
-      bySlot: {
-        'slot-1': omen,
-        'slot-2': viper,
-      },
-      order: ['slot-1', 'slot-2'],
-      warnings: [
-        { code: 'TEAM_MISSING_ROLE', role: 'duelist' },
-        { code: 'TEAM_MISSING_ROLE', role: 'sentinel' },
-      ],
-    };
-
-    const slots: SquadSlot[] = [
-      { id: 'slot-1', name: 'Player 1', role: 'controller', lockedAgentId: null },
-      { id: 'slot-2', name: 'Player 2', role: 'controller', lockedAgentId: null },
-    ];
-
+  it('SquadMissingRolesAlert warns when core roles are missing (Ft-26)', () => {
     render(
       <I18nProvider>
-        <SquadResultTable result={result} slots={slots} />
+        <SquadMissingRolesAlert missingRoles={['duelist', 'sentinel']} />
+      </I18nProvider>,
+    );
+    expect(screen.getByText(/đội hình thiếu role:/i)).toHaveTextContent(/duelist, sentinel/i);
+  });
+
+  it('AC-21.4 SquadSlotStage renders rolled agent in-place and locks it (AC-23.4)', () => {
+    const jett = agents.find((a) => a.slug === 'jett')!;
+    const handleLock = vi.fn();
+    render(
+      <I18nProvider>
+        <SquadSlotStage
+          display={{ kind: 'rolled', agent: jett }}
+          onOpenPicker={vi.fn()}
+          onLock={handleLock}
+          onUnlock={vi.fn()}
+        />
       </I18nProvider>,
     );
 
-    expect(screen.getByText(/đội hình thiếu role:/i)).toBeInTheDocument();
-    expect(screen.getByText('Omen')).toBeInTheDocument();
-    expect(screen.getByText('Viper')).toBeInTheDocument();
+    expect(screen.getByText('Jett')).toBeInTheDocument();
+    expect(screen.getByAltText('Jett')).toBeInTheDocument();
+    expect(screen.getByText('Duelist')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: /^khóa jett$/i }));
+    expect(handleLock).toHaveBeenCalledWith(jett.id);
+  });
+
+  it('AC-23.4 SquadSlotStage shows locked badge and unlock action for locked agent', () => {
+    const omen = agents.find((a) => a.slug === 'omen')!;
+    const handleUnlock = vi.fn();
+    render(
+      <I18nProvider>
+        <SquadSlotStage
+          display={{ kind: 'locked', agent: omen }}
+          onOpenPicker={vi.fn()}
+          onLock={vi.fn()}
+          onUnlock={handleUnlock}
+        />
+      </I18nProvider>,
+    );
+
+    expect(screen.getByText('Đã khóa')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: /mở khóa omen/i }));
+    expect(handleUnlock).toHaveBeenCalled();
+  });
+
+  it('SquadSlotStage hides actions while rolling', () => {
+    const sage = agents.find((a) => a.slug === 'sage')!;
+    render(
+      <I18nProvider>
+        <SquadSlotStage
+          display={{ kind: 'rolling', agent: sage }}
+          onOpenPicker={vi.fn()}
+          onLock={vi.fn()}
+          onUnlock={vi.fn()}
+        />
+      </I18nProvider>,
+    );
+
+    expect(screen.getByText('Đang quét...')).toBeInTheDocument();
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });
 });
