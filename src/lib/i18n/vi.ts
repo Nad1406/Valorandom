@@ -67,6 +67,7 @@ export const vi = {
   'single.pool.emptyHint': 'Tất cả mục đã bị bỏ chọn. Hãy chọn ít nhất 1 mục để random.',
   'single.scanning': 'ĐANG QUÉT MỤC TIÊU...',
   'single.targetAcquired': 'ĐÃ KHÓA MỤC TIÊU',
+  'single.rollStatusCode': 'ĐANG KHÓA DỮ LIỆU',
 
   // Squad Random
   'squad.title': 'Random đội hình 5 người',
@@ -118,6 +119,11 @@ export const vi = {
   'stats.sites': 'Khu vực: {sites}',
   'stats.active': 'Trong rotation',
   'stats.inactive': 'Ngoài rotation',
+  'card.status.ready': 'Sẵn sàng',
+  'card.status.locked': 'Đã khóa mục tiêu',
+  'card.abilities': 'Kỹ năng',
+  'card.abilityHint': 'Chọn biểu tượng để xem tên',
+  'card.reload': 'Nạp đạn',
 
   // A11y
   'a11y.resultAnnounce': 'Kết quả: {name}',

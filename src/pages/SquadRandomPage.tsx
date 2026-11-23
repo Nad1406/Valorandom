@@ -1,4 +1,5 @@
 import React from 'react';
+import { AlertTriangle, CheckCircle2, Copy, Lock, Plus, RotateCcw, XCircle } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { localize } from '@/data';
 import {
@@ -17,22 +18,24 @@ const SquadPageHeader: React.FC<Pick<SquadApi, 'resetSquad' | 'shareSquad'>> = (
 }) => {
   const { t } = useI18n();
   return (
-    <div className="flex flex-col gap-3 border-b border-white/10 pb-4 sm:flex-row sm:items-center sm:justify-between">
+    <div className="flex flex-col gap-3 border-b border-white/12 pb-4 sm:flex-row sm:items-center sm:justify-between">
       <div>
         <div className="flex items-center gap-3">
-          <span className="h-6 w-1 bg-val-red shadow-glow" />
-          <h1 className="font-display text-4xl font-black uppercase tracking-tight text-val-offwhite sm:text-5xl">
+          <span className="h-7 w-1 bg-val-red" aria-hidden="true" />
+          <h1 className="font-display text-4xl font-black uppercase tracking-tight text-val-offwhite sm:text-5xl leading-none">
             {t('squad.title')}
           </h1>
         </div>
-        <p className="mt-1 pl-4 font-sans text-xs text-white/50 sm:text-sm">{t('squad.desc')}</p>
+        <p className="mt-1.5 pl-4 font-sans text-xs text-ink-muted sm:text-sm">{t('squad.desc')}</p>
       </div>
       <div className="flex items-center gap-2">
         <Button variant="outline" size="sm" onClick={resetSquad}>
-          {t('squad.reset')}
+          <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
+          <span>{t('squad.reset')}</span>
         </Button>
         <Button variant="secondary" size="sm" onClick={shareSquad}>
-          📋 {t('squad.share')}
+          <Copy className="h-3.5 w-3.5" aria-hidden="true" />
+          <span>{t('squad.share')}</span>
         </Button>
       </div>
     </div>
@@ -46,25 +49,28 @@ const SquadAlerts: React.FC<
     {toastMessage && (
       <div
         role="status"
-        className="rounded-lg border border-emerald-500/50 bg-emerald-500/10 p-3 text-center font-tactical text-sm font-bold tracking-wider text-emerald-400"
+        className="flex items-center justify-center gap-2 rounded-sm border border-val-teal/50 bg-val-teal/10 p-3 font-tactical text-sm font-bold tracking-wider text-val-teal"
       >
-        ✓ {toastMessage}
+        <CheckCircle2 className="h-4 w-4 shrink-0" aria-hidden="true" />
+        <span>{toastMessage}</span>
       </div>
     )}
     {warningMessage && (
       <div
         role="status"
-        className="rounded-lg border border-amber-500/50 bg-amber-500/10 p-3 font-tactical text-sm tracking-wider text-amber-300"
+        className="flex items-center gap-2 rounded-sm border border-val-gold/50 bg-val-gold/10 p-3 font-tactical text-sm tracking-wider text-val-gold"
       >
-        ⚠️ {warningMessage}
+        <AlertTriangle className="h-4 w-4 shrink-0" aria-hidden="true" />
+        <span>{warningMessage}</span>
       </div>
     )}
     {errorMessage && (
       <div
         role="alert"
-        className="rounded-lg border border-val-red/50 bg-val-red/10 p-3 font-tactical text-sm font-bold tracking-wider text-val-red"
+        className="flex items-center gap-2 rounded-sm border border-val-red/50 bg-val-red/10 p-3 font-tactical text-sm font-bold tracking-wider text-val-red"
       >
-        ✕ {errorMessage}
+        <XCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
+        <span>{errorMessage}</span>
       </div>
     )}
     <SquadMissingRolesAlert missingRoles={missingRoles} />
@@ -79,7 +85,9 @@ const SquadAnnouncer: React.FC<{ displays: readonly SlotDisplay[]; isRolling: bo
   const names = isRolling
     ? ''
     : displays
-        .map((d) => (d.kind === 'rolled' || d.kind === 'locked' ? localize(d.agent.displayName, lang) : null))
+        .map((d) =>
+          d.kind === 'rolled' || d.kind === 'locked' ? localize(d.agent.displayName, lang) : null,
+        )
         .filter((n): n is string => Boolean(n))
         .join(', ');
   return (
@@ -89,12 +97,9 @@ const SquadAnnouncer: React.FC<{ displays: readonly SlotDisplay[]; isRolling: bo
   );
 };
 
-const SquadLaunchButton: React.FC<Pick<SquadApi, 'randomize' | 'allLocked' | 'isRolling' | 'result'>> = ({
-  randomize,
-  allLocked,
-  isRolling,
-  result,
-}) => {
+const SquadLaunchButton: React.FC<
+  Pick<SquadApi, 'randomize' | 'allLocked' | 'isRolling' | 'result'>
+> = ({ randomize, allLocked, isRolling, result }) => {
   const { t } = useI18n();
   return (
     <div className="mt-2 flex flex-col items-center justify-center gap-2">
@@ -109,7 +114,10 @@ const SquadLaunchButton: React.FC<Pick<SquadApi, 'randomize' | 'allLocked' | 'is
         {result ? t('squad.rerollSquad') : t('squad.randomSquad')}
       </button>
       {allLocked && (
-        <p className="font-tactical text-xs tracking-wider text-white/50">🔒 {t('squad.allLocked')}</p>
+        <p className="inline-flex items-center gap-1.5 font-tactical text-xs tracking-wider text-ink-muted">
+          <Lock className="h-3.5 w-3.5 text-val-teal" aria-hidden="true" />
+          <span>{t('squad.allLocked')}</span>
+        </p>
       )}
     </div>
   );
@@ -128,7 +136,7 @@ export const SquadRandomPage: React.FC = () => {
         <div className="flex items-center justify-between">
           <span
             data-testid="slot-count"
-            className="font-tactical text-xs font-bold uppercase tracking-widest text-val-teal"
+            className="font-tactical text-xs font-bold uppercase tracking-widest text-val-teal tabular-nums"
           >
             {squad.slots.length} / 5 Slots
           </span>
@@ -137,9 +145,9 @@ export const SquadRandomPage: React.FC = () => {
             size="sm"
             onClick={squad.addSlot}
             disabled={!squad.canAddSlot}
-            className="font-tactical tracking-wider"
           >
-            + {t('squad.addSlot')}
+            <Plus className="h-3.5 w-3.5" aria-hidden="true" />
+            <span>+ {t('squad.addSlot')}</span>
           </Button>
         </div>
 

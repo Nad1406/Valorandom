@@ -27,11 +27,35 @@ export interface SquadRandomInput {
   rng: Rng;
 }
 
+type RoleBuckets = Record<Role, Agent[]>;
+
+function buildPoolIndex(pool: readonly Agent[]): {
+  poolMap: Map<string, Agent>;
+  buckets: RoleBuckets;
+} {
+  const poolMap = new Map<string, Agent>();
+  const buckets: RoleBuckets = { duelist: [], initiator: [], controller: [], sentinel: [] };
+  for (const agent of pool) {
+    poolMap.set(agent.id, agent);
+    buckets[agent.role].push(agent);
+  }
+  return { poolMap, buckets };
+}
+
+function removeAgentFromBucket(buckets: RoleBuckets, agent: Agent): void {
+  const list = buckets[agent.role];
+  const idx = list.indexOf(agent);
+  if (idx === -1) return;
+  const last = list.pop();
+  if (last && idx < list.length) {
+    list[idx] = last;
+  }
+}
+
 function validateInput(slots: readonly SquadSlot[], poolMap: Map<string, Agent>): void {
   if (slots.length < 1 || slots.length > 5) {
     throw new SquadError('INVALID_SLOT_COUNT', { needed: slots.length });
   }
-
   const lockedIds = new Set<string>();
   for (const slot of slots) {
     if (!slot.lockedAgentId) continue;
@@ -39,16 +63,12 @@ function validateInput(slots: readonly SquadSlot[], poolMap: Map<string, Agent>)
       throw new SquadError('INVALID_LOCK', { agentId: slot.lockedAgentId });
     }
     lockedIds.add(slot.lockedAgentId);
-
     const agent = poolMap.get(slot.lockedAgentId);
     if (!agent) {
       throw new SquadError('INVALID_LOCK', { agentId: slot.lockedAgentId });
     }
     if (slot.role !== 'flex' && agent.role !== slot.role) {
-      throw new SquadError('INVALID_LOCK_ROLE', {
-        role: slot.role,
-        agentId: slot.lockedAgentId,
-      });
+      throw new SquadError('INVALID_LOCK_ROLE', { role: slot.role, agentId: slot.lockedAgentId });
     }
   }
 }
@@ -56,6 +76,7 @@ function validateInput(slots: readonly SquadSlot[], poolMap: Map<string, Agent>)
 function assignLockedSlots(
   slots: readonly SquadSlot[],
   poolMap: Map<string, Agent>,
+  buckets: RoleBuckets,
   bySlot: Record<string, Agent>,
   order: string[],
 ): void {
@@ -64,84 +85,68 @@ function assignLockedSlots(
     const agent = poolMap.get(slot.lockedAgentId)!;
     bySlot[slot.id] = agent;
     order.push(slot.id);
-    poolMap.delete(agent.id);
+    removeAgentFromBucket(buckets, agent);
   }
 }
 
 function assignFixedRoles(
   slots: readonly SquadSlot[],
-  poolMap: Map<string, Agent>,
+  buckets: RoleBuckets,
   bySlot: Record<string, Agent>,
   order: string[],
   rng: Rng,
 ): void {
-  const fixedFreeSlots = slots.filter(
-    (slot) => slot.role !== 'flex' && !slot.lockedAgentId,
-  );
-  const shuffledSlots = shuffle(fixedFreeSlots, rng);
-
-  for (const slot of shuffledSlots) {
+  const fixedFreeSlots = slots.filter((slot) => slot.role !== 'flex' && !slot.lockedAgentId);
+  for (const slot of shuffle(fixedFreeSlots, rng)) {
     const role = slot.role as Role;
-    const candidates = Array.from(poolMap.values()).filter((a) => a.role === role);
+    const candidates = buckets[role];
     if (candidates.length === 0) {
-      throw new SquadError('INSUFFICIENT_ROLE', {
-        role,
-        needed: 1,
-        availableCount: 0,
-      });
+      throw new SquadError('INSUFFICIENT_ROLE', { role, needed: 1, availableCount: 0 });
     }
     const chosen = pick(candidates, rng)!;
     bySlot[slot.id] = chosen;
     order.push(slot.id);
-    poolMap.delete(chosen.id);
+    removeAgentFromBucket(buckets, chosen);
   }
 }
 
 function assignFlexSlots(
   slots: readonly SquadSlot[],
-  poolMap: Map<string, Agent>,
+  buckets: RoleBuckets,
   bySlot: Record<string, Agent>,
   order: string[],
   rng: Rng,
 ): void {
-  const flexFreeSlots = slots.filter(
-    (slot) => slot.role === 'flex' && !slot.lockedAgentId,
-  );
-  const shuffledFlex = shuffle(flexFreeSlots, rng);
-
+  const flexFreeSlots = slots.filter((slot) => slot.role === 'flex' && !slot.lockedAgentId);
   const teamRoles = new Set(Object.values(bySlot).map((a) => a.role));
   let missing = ROLES.filter((r) => !teamRoles.has(r));
 
-  for (const slot of shuffledFlex) {
-    const fillable = missing.filter((r) =>
-      Array.from(poolMap.values()).some((a) => a.role === r),
-    );
-
+  for (const slot of shuffle(flexFreeSlots, rng)) {
+    const fillable = missing.filter((r) => buckets[r].length > 0);
     if (fillable.length > 0) {
       const chosenRole = pick(fillable, rng)!;
-      const candidates = Array.from(poolMap.values()).filter(
-        (a) => a.role === chosenRole,
-      );
-      const chosen = pick(candidates, rng)!;
+      const chosen = pick(buckets[chosenRole], rng)!;
       bySlot[slot.id] = chosen;
       order.push(slot.id);
-      poolMap.delete(chosen.id);
+      removeAgentFromBucket(buckets, chosen);
       missing = missing.filter((r) => r !== chosenRole);
-    } else {
-      if (poolMap.size === 0) {
-        throw new SquadError('EXHAUSTED_POOL');
-      }
-      const chosen = pick(Array.from(poolMap.values()), rng)!;
-      bySlot[slot.id] = chosen;
-      order.push(slot.id);
-      poolMap.delete(chosen.id);
+      continue;
     }
+
+    const remaining = ROLES.flatMap((r) => buckets[r]);
+    if (remaining.length === 0) {
+      throw new SquadError('EXHAUSTED_POOL');
+    }
+    const chosen = pick(remaining, rng)!;
+    bySlot[slot.id] = chosen;
+    order.push(slot.id);
+    removeAgentFromBucket(buckets, chosen);
   }
 }
 
 export function randomSquad(input: SquadRandomInput): SquadResult {
   const { slots, pool, rng } = input;
-  const poolMap = new Map(pool.map((agent) => [agent.id, agent]));
+  const { poolMap, buckets } = buildPoolIndex(pool);
 
   validateInput(slots, poolMap);
 
@@ -149,9 +154,9 @@ export function randomSquad(input: SquadRandomInput): SquadResult {
   const order: string[] = [];
   const warnings: SquadWarning[] = [];
 
-  assignLockedSlots(slots, poolMap, bySlot, order);
-  assignFixedRoles(slots, poolMap, bySlot, order, rng);
-  assignFlexSlots(slots, poolMap, bySlot, order, rng);
+  assignLockedSlots(slots, poolMap, buckets, bySlot, order);
+  assignFixedRoles(slots, buckets, bySlot, order, rng);
+  assignFlexSlots(slots, buckets, bySlot, order, rng);
 
   const finalTeamRoles = new Set(Object.values(bySlot).map((a) => a.role));
   for (const r of ROLES) {
@@ -164,4 +169,3 @@ export function randomSquad(input: SquadRandomInput): SquadResult {
 }
 
 export const squadRandom = randomSquad;
-

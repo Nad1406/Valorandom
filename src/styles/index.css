@@ -5,14 +5,15 @@
 @layer base {
   :root {
     color-scheme: dark;
+    accent-color: #FF4655;
   }
 
   html,
   body {
-    background-color: #0F1923;
-    background-image: 
-      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 70, 85, 0.12), transparent 70%),
-      linear-gradient(135deg, rgba(15, 25, 35, 0.95) 0%, rgba(11, 17, 24, 0.98) 100%);
+    background-color: #0A1017;
+    background-image:
+      radial-gradient(ellipse 75% 45% at 50% -15%, rgba(255, 70, 85, 0.1), transparent 70%),
+      linear-gradient(180deg, #0A1017 0%, #0D1620 100%);
     background-attachment: fixed;
     color: #ECE8E1;
     font-family: 'Be Vietnam Pro', 'Inter', system-ui, -apple-system, sans-serif;
@@ -29,7 +30,15 @@
 }
 
 @layer utilities {
-  /* Tactical angular clip paths */
+  /* Architectural 48px tactical HUD backdrop grid */
+  .bg-tactical-grid {
+    background-image:
+      linear-gradient(to right, rgba(236, 232, 225, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(236, 232, 225, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Tactical angular chamfer paths */
   .clip-corner-tl {
     clip-path: polygon(14px 0, 100% 0, 100% 100%, 0 100%, 0 14px);
   }
@@ -38,21 +47,28 @@
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
   }
 
+  .clip-chamfer-sm {
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  }
+
   .clip-tactical {
     clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
   }
 
-  /* Thin tactical scrollbar */
+  /* Accessible themed scrollbar */
+  .custom-scrollbar {
+    scrollbar-color: #3A4B5E #0A1017;
+  }
   .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
   }
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(15, 25, 35, 0.6);
+    background: #0A1017;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 3px;
+    background: #3A4B5E;
+    border-radius: 2px;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #FF4655;
@@ -64,49 +80,70 @@
   }
 }
 
-/* Valorant "FIND MATCH" double-border button styling */
+/* Valorant double-bordered PLAY / RANDOMIZE trigger */
 .val-btn-match {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.625rem;
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   background-color: #FF4655;
   color: #FFFFFF;
-  padding: 0.75rem 2rem;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 0 20px rgba(255, 70, 85, 0.4);
+  padding: 0.85rem 2rem;
+  cursor: pointer;
+  transition:
+    background-color 180ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(255, 70, 85, 0.3);
 }
 
 .val-btn-match::before {
   content: '';
   position: absolute;
   inset: -4px;
-  border: 1px solid rgba(255, 70, 85, 0.5);
+  border: 1px solid rgba(255, 70, 85, 0.45);
   pointer-events: none;
-  transition: inset 0.2s ease, border-color 0.2s ease;
+  transition: border-color 180ms ease;
 }
 
 .val-btn-match:hover:not(:disabled) {
-  background-color: #FF5E6C;
+  background-color: #FF5563;
   transform: translateY(-1px);
-  box-shadow: 0 0 28px rgba(255, 70, 85, 0.65);
+  box-shadow: 0 12px 28px rgba(255, 70, 85, 0.45);
 }
 
 .val-btn-match:hover:not(:disabled)::before {
-  inset: -6px;
-  border-color: #FF4655;
+  border-color: rgba(255, 70, 85, 0.85);
 }
 
 .val-btn-match:active:not(:disabled) {
   transform: translateY(1px);
+  background-color: #D13644;
+}
+
+.val-btn-match:focus-visible {
+  outline: 2px solid #ECE8E1;
+  outline-offset: 5px;
 }
 
 .val-btn-match:disabled {
   opacity: 0.45;
   cursor: not-allowed;
   box-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .val-btn-match,
+  .val-btn-match::before {
+    transition: none;
+  }
+  .val-btn-match:hover:not(:disabled),
+  .val-btn-match:active:not(:disabled) {
+    transform: none;
+  }
 }

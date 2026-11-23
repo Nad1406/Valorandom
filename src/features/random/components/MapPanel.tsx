@@ -10,6 +10,7 @@ import { filterMaps, type MapFilter } from '@/features/random/filters';
 import { useRandomizer } from '@/features/random/useRandomizer';
 import { PoolSelector, type PoolItem } from '@/features/single';
 import { TacticalRollOverlay } from '@/features/single/TacticalRollOverlay';
+import { playUiClick } from '@/lib/audio/tacticalSound';
 import { useI18n } from '@/lib/i18n';
 import type { GameMap } from '@/types/valorant';
 
@@ -24,7 +25,6 @@ export const MapPanel: React.FC = () => {
     () => ({ activeOnly, selectedIds }),
     [activeOnly, selectedIds],
   );
-
   const pool = useMemo(() => filterMaps(maps, filter), [filter]);
 
   const { result, isAnimating, rollingItem, randomize } = useRandomizer<GameMap>({
@@ -33,7 +33,19 @@ export const MapPanel: React.FC = () => {
   });
 
   const isPoolEmpty = pool.length === 0;
+  const toggleActiveOnly = (next: boolean) => {
+    playUiClick();
+    setActiveOnly(next);
+  };
 
+  const selectAll = () => {
+    playUiClick();
+    setSelectedIds(new Set(maps.map((m) => m.id)));
+  };
+  const deselectAll = () => {
+    playUiClick();
+    setSelectedIds(new Set());
+  };
   const toggleItem = (id: string) => {
     setSelectedIds((prev) => {
       const next = new Set(prev);
@@ -42,9 +54,6 @@ export const MapPanel: React.FC = () => {
       return next;
     });
   };
-
-  const selectAll = () => setSelectedIds(new Set(maps.map((m) => m.id)));
-  const deselectAll = () => setSelectedIds(new Set());
 
   const poolItems: PoolItem[] = useMemo(
     () =>
@@ -61,23 +70,18 @@ export const MapPanel: React.FC = () => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-      {/* Left: Hero Showcase Stage (~60%) */}
-      <div className="lg:col-span-7 xl:col-span-7 flex flex-col items-center justify-center gap-6">
+      <div className="lg:col-span-7 flex flex-col items-center justify-center gap-6">
         <div className="relative w-full max-w-lg min-h-[460px] flex items-center justify-center">
           {isPoolEmpty ? (
-            <Card className="w-full p-8 border-white/10 bg-[#0F1923]/90">
+            <Card className="w-full p-8 border-white/12 bg-bg-elevated/95">
               <EmptyState
                 title={t('common.empty')}
-                message={
-                  selectedIds.size === 0
-                    ? t('single.pool.emptyHint')
-                    : t('single.empty.hint')
-                }
+                message={selectedIds.size === 0 ? t('single.pool.emptyHint') : t('single.empty.hint')}
                 action={
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={selectedIds.size === 0 ? selectAll : () => setActiveOnly(false)}
+                    onClick={selectedIds.size === 0 ? selectAll : () => toggleActiveOnly(false)}
                   >
                     {selectedIds.size === 0 ? t('single.pool.selectAll') : t('common.clearFilter')}
                   </Button>
@@ -86,8 +90,8 @@ export const MapPanel: React.FC = () => {
             </Card>
           ) : displayedMap ? (
             <div
-              className={`w-full transition-all duration-300 ${
-                isAnimating ? 'opacity-40 scale-95' : 'opacity-100 scale-100 animate-fade-up'
+              className={`w-full transition-all duration-200 motion-reduce:transition-none ${
+                isAnimating ? 'opacity-35 scale-[0.98]' : 'opacity-100 scale-100 animate-fade-up motion-reduce:animate-none'
               }`}
             >
               <MapCard map={displayedMap} highlight={Boolean(result)} />
@@ -100,41 +104,35 @@ export const MapPanel: React.FC = () => {
           />
         </div>
 
-        {/* Tactical "FIND MATCH" Style Random Button */}
         <button
           type="button"
           disabled={isPoolEmpty || isAnimating}
           onClick={() => randomize(pool)}
           className="val-btn-match w-full max-w-md text-base sm:text-lg clip-tactical"
         >
-          {isAnimating
-            ? t('single.scanning')
-            : result
-              ? t('common.reroll')
-              : t('common.random')}
+          {isAnimating ? t('single.scanning') : result ? t('common.reroll') : t('common.random')}
         </button>
       </div>
 
-      {/* Right: Control & Pool Sidebar (~40%) */}
-      <div className="lg:col-span-5 xl:col-span-5 flex flex-col gap-5">
-        <Card className="p-5 flex flex-col gap-4 border-white/10 bg-[#0F1923]/90 clip-corner-tl">
+      <div className="lg:col-span-5 flex flex-col gap-5">
+        <Card className="p-5 flex flex-col gap-4 border-white/12 bg-bg-elevated/95 clip-corner-tl">
           <div>
-            <h2 className="font-display font-black text-2xl uppercase tracking-wider text-val-offwhite">
+            <h2 className="font-display font-black text-2xl uppercase tracking-wider text-val-offwhite leading-none">
               {t('single.map.title')}
             </h2>
-            <p className="text-xs text-white/50 mt-1 font-sans">{t('single.map.desc')}</p>
+            <p className="text-xs text-ink-muted mt-1.5 font-sans">{t('single.map.desc')}</p>
           </div>
 
-          <div className="py-2 border-y border-white/10">
+          <div className="py-3 border-y border-white/10">
             <Toggle
               checked={activeOnly}
-              onChange={setActiveOnly}
+              onChange={toggleActiveOnly}
               label={t('single.filter.activeMapsOnly')}
               id="active-maps-toggle"
             />
           </div>
 
-          <div className="flex items-center justify-between text-xs font-tactical tracking-wider text-white/60 pt-1">
+          <div className="flex items-center justify-between text-xs font-tactical tracking-wider text-ink-muted tabular-nums">
             <span>{t('single.filter.poolCount', { count: pool.length })}</span>
             <Badge variant={activeOnly ? 'accent' : 'default'}>
               {activeOnly ? t('single.filter.activeMapsOnly') : t('single.filter.allMaps')}

@@ -7,7 +7,7 @@ import type { SquadSlot } from '@/types/squad';
 import type { Agent } from '@/types/valorant';
 import { buildRollingFrame, rollTickDelay } from './slotDisplay';
 
-export const SQUAD_ROLL_DURATION_MS = 1100;
+export const SQUAD_ROLL_DURATION_MS = 600;
 
 /**
  * Drives the in-banner roulette preview for unlocked squad slots.

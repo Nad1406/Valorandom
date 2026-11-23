@@ -18,47 +18,36 @@ export const TacticalRollOverlay: React.FC<TacticalRollOverlayProps> = ({
     <div
       role="status"
       aria-live="polite"
-      className="absolute inset-0 z-50 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-val-red/60 bg-[#0F1923]/90 p-6 backdrop-blur-md shadow-glow pointer-events-none"
+      className="absolute inset-0 z-50 flex flex-col items-center justify-center overflow-hidden rounded-sm border border-val-red/70 bg-bg-elevated/92 p-6 backdrop-blur-md shadow-glow pointer-events-none clip-corner-tl"
     >
-      {/* High-speed scanline beam */}
-      <div className="pointer-events-none absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-val-red to-transparent opacity-90 shadow-glow animate-scan" />
+      {/* Scanline beam */}
+      <div className="pointer-events-none absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-val-red to-transparent opacity-90 animate-scan motion-reduce:animate-none" />
 
-      {/* Tactical radar/target crosshairs */}
-      <div className="pointer-events-none absolute inset-4 border border-white/10">
-        <span className="absolute top-0 left-0 -translate-x-1 -translate-y-1 font-mono text-xs text-val-red">
-          +
-        </span>
-        <span className="absolute top-0 right-0 translate-x-1 -translate-y-1 font-mono text-xs text-val-red">
-          +
-        </span>
-        <span className="absolute bottom-0 left-0 -translate-x-1 translate-y-1 font-mono text-xs text-val-red">
-          +
-        </span>
-        <span className="absolute bottom-0 right-0 translate-x-1 translate-y-1 font-mono text-xs text-val-red">
-          +
-        </span>
+      {/* Tactical corner brackets */}
+      <div className="pointer-events-none absolute inset-3 border border-white/10">
+        <span className="absolute -top-[1px] -left-[1px] h-3 w-3 border-t-2 border-l-2 border-val-red" />
+        <span className="absolute -top-[1px] -right-[1px] h-3 w-3 border-t-2 border-r-2 border-val-red" />
+        <span className="absolute -bottom-[1px] -left-[1px] h-3 w-3 border-b-2 border-l-2 border-val-red" />
+        <span className="absolute -bottom-[1px] -right-[1px] h-3 w-3 border-b-2 border-r-2 border-val-red" />
       </div>
 
-      {/* Scanning status banner */}
-      <div className="flex items-center gap-2">
-        <span className="h-2.5 w-2.5 rounded-full bg-val-red animate-ping" />
-        <span className="font-tactical text-sm sm:text-base tracking-widest text-val-red uppercase font-bold animate-pulse">
+      <div className="flex items-center gap-2.5">
+        <span className="h-2.5 w-2.5 rounded-sm bg-val-red animate-pulse motion-reduce:animate-none" />
+        <span className="font-tactical text-sm sm:text-base tracking-widest text-val-red uppercase font-bold">
           {t('single.scanning')}
         </span>
       </div>
 
-      {/* Candidate item preview text */}
       {currentItemName && (
         <div className="mt-3 text-center">
-          <p className="font-display text-4xl sm:text-6xl font-black uppercase tracking-wider text-val-offwhite transition-transform duration-75">
+          <p className="font-display text-5xl sm:text-6xl font-black uppercase tracking-tight text-val-offwhite leading-none">
             {currentItemName}
           </p>
         </div>
       )}
 
-      {/* Bottom tactical code */}
-      <div className="mt-4 font-mono text-[11px] tracking-widest text-white/40 uppercase">
-        // SYSTEM_LOCK // ROULETTE_ACTIVE
+      <div className="mt-4 font-tactical text-xs font-bold tracking-widest text-ink-muted uppercase">
+        {t('single.rollStatusCode')}
       </div>
     </div>
   );

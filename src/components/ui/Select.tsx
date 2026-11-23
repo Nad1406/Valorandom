@@ -22,7 +22,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         {label && (
           <label
             htmlFor={selectId}
-            className="text-xs font-display tracking-wider uppercase text-ink-muted font-medium"
+            className="text-xs font-tactical font-bold tracking-widest uppercase text-ink-muted"
           >
             {label}
           </label>
@@ -30,12 +30,17 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         <select
           ref={ref}
           id={selectId}
-          className={`w-full rounded-lg bg-surface border border-line text-ink px-3 py-2 text-sm focus:outline-none focus:border-val-red focus:ring-1 focus:ring-val-red transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${error ? 'border-red-500' : ''} ${className}`}
+          className={`w-full rounded-sm bg-bg-base border border-white/15 text-ink px-3 py-2 font-tactical text-sm tracking-wider focus:outline-none focus:border-val-red focus:ring-1 focus:ring-val-red transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${error ? 'border-red-500' : ''} ${className}`}
           {...rest}
         >
           {options
             ? options.map((opt) => (
-                <option key={opt.value} value={opt.value} disabled={opt.disabled}>
+                <option
+                  key={opt.value}
+                  value={opt.value}
+                  disabled={opt.disabled}
+                  className="bg-bg-elevated text-ink"
+                >
                   {opt.label}
                 </option>
               ))

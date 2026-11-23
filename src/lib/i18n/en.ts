@@ -69,6 +69,7 @@ export const en: Record<TranslationKey, string> = {
   'single.pool.emptyHint': 'All items are deselected. Please select at least 1 item to randomize.',
   'single.scanning': 'SCANNING TARGET...',
   'single.targetAcquired': 'TARGET ACQUIRED',
+  'single.rollStatusCode': 'SYSTEM LOCK // ACTIVE',
 
   // Squad Random
   'squad.title': '5-Player Squad Randomizer',
@@ -120,6 +121,11 @@ export const en: Record<TranslationKey, string> = {
   'stats.sites': 'Sites: {sites}',
   'stats.active': 'In rotation',
   'stats.inactive': 'Out of rotation',
+  'card.status.ready': 'Ready',
+  'card.status.locked': 'Target Locked',
+  'card.abilities': 'Abilities',
+  'card.abilityHint': 'Select icon to inspect',
+  'card.reload': 'Reload',
 
   // A11y
   'a11y.resultAnnounce': 'Result: {name}',

@@ -1,4 +1,5 @@
 import React from 'react';
+import { AlertTriangle } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 import type { Role } from '@/types/valorant';
 
@@ -15,9 +16,10 @@ export const SquadMissingRolesAlert: React.FC<SquadMissingRolesAlertProps> = ({ 
   return (
     <div
       role="status"
-      className="rounded-lg border border-amber-500/40 bg-amber-500/10 p-3 text-sm font-tactical tracking-wider text-amber-300"
+      className="flex items-center gap-2 rounded-sm border border-val-gold/50 bg-val-gold/10 p-3 font-tactical text-sm tracking-wider text-val-gold"
     >
-      ⚠️ {t('squad.warning.missingRoles', { roles })}
+      <AlertTriangle className="h-4 w-4 shrink-0" aria-hidden="true" />
+      <span>{t('squad.warning.missingRoles', { roles })}</span>
     </div>
   );
 };

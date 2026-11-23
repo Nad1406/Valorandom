@@ -1,8 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   getSoundEnabled,
+  playConfirmSignal,
   playDataTick,
+  playErrorSignal,
+  playLockSignal,
   playTargetLock,
+  playUiClick,
   setSoundEnabled,
 } from '../tacticalSound';
 
@@ -31,12 +35,17 @@ describe('TacticalSound System', () => {
     window.removeEventListener('valorandom-sound-change', handler);
   });
 
-  it('playDataTick and playTargetLock safely no-op in headless environment without AudioContext', () => {
+  it('safely no-ops all SFX in headless environment without AudioContext', () => {
+    expect(() => playUiClick()).not.toThrow();
     expect(() => playDataTick(0.5)).not.toThrow();
     expect(() => playTargetLock()).not.toThrow();
+    expect(() => playLockSignal(true)).not.toThrow();
+    expect(() => playLockSignal(false)).not.toThrow();
+    expect(() => playConfirmSignal()).not.toThrow();
+    expect(() => playErrorSignal()).not.toThrow();
   });
 
-  it('plays sounds when mocked AudioContext is provided', () => {
+  it('plays all digital signal SFX via mocked AudioContext and respects mute', () => {
     const mockOscillator = {
       type: 'sine',
       frequency: {
@@ -57,11 +66,20 @@ describe('TacticalSound System', () => {
       connect: vi.fn(),
     };
 
+    const mockFilter = {
+      type: 'bandpass',
+      frequency: { setValueAtTime: vi.fn() },
+      connect: vi.fn(),
+    };
+
+    const createOscillator = vi.fn(() => mockOscillator);
+
     class MockAudioContext {
       currentTime = 0;
       state = 'running';
-      createOscillator = vi.fn(() => mockOscillator);
+      createOscillator = createOscillator;
       createGain = vi.fn(() => mockGain);
+      createBiquadFilter = vi.fn(() => mockFilter);
       destination = {};
       resume = vi.fn();
     }
@@ -69,11 +87,20 @@ describe('TacticalSound System', () => {
     vi.stubGlobal('AudioContext', MockAudioContext);
 
     setSoundEnabled(true);
-    expect(() => playDataTick(0.2)).not.toThrow();
-    expect(() => playTargetLock()).not.toThrow();
+    playUiClick();
+    playDataTick(0.2);
+    playTargetLock();
+    playLockSignal(true);
+    playLockSignal(false);
+    playConfirmSignal();
+    playErrorSignal();
+    expect(createOscillator).toHaveBeenCalled();
 
-    // When sound is disabled, sound methods do not play
+    const callsWhenEnabled = createOscillator.mock.calls.length;
     setSoundEnabled(false);
-    expect(() => playDataTick(0.8)).not.toThrow();
+    playUiClick();
+    playDataTick(0.8);
+    playTargetLock();
+    expect(createOscillator.mock.calls.length).toBe(callsWhenEnabled);
   });
 });

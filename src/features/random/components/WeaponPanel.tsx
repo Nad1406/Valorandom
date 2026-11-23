@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from 'react';
 import { WeaponCard } from '@/components/cards/WeaponCard';
-import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { EmptyState } from '@/components/ui/EmptyState';
@@ -9,16 +8,10 @@ import { filterWeapons, type WeaponFilter } from '@/features/random/filters';
 import { useRandomizer } from '@/features/random/useRandomizer';
 import { PoolSelector, type PoolItem } from '@/features/single';
 import { TacticalRollOverlay } from '@/features/single/TacticalRollOverlay';
+import { playUiClick } from '@/lib/audio/tacticalSound';
 import { useI18n } from '@/lib/i18n';
 import type { Weapon, WeaponCategory } from '@/types/valorant';
-import { WEAPON_CATEGORIES } from '@/types/valorant';
-
-const COST_PRESETS = [
-  { label: 'any', max: undefined },
-  { label: '≤ 1000', max: 1000 },
-  { label: '≤ 2000', max: 2000 },
-  { label: '≤ 3000', max: 3000 },
-];
+import { WeaponFilterCard } from './WeaponFilterCard';
 
 export const WeaponPanel: React.FC = () => {
   const { t, lang } = useI18n();
@@ -32,7 +25,6 @@ export const WeaponPanel: React.FC = () => {
     () => ({ category: selectedCategory, costMax, selectedIds }),
     [selectedCategory, costMax, selectedIds],
   );
-
   const pool = useMemo(() => filterWeapons(weapons, filter), [filter]);
 
   const { result, isAnimating, rollingItem, randomize } = useRandomizer<Weapon>({
@@ -41,7 +33,14 @@ export const WeaponPanel: React.FC = () => {
   });
 
   const isPoolEmpty = pool.length === 0;
-
+  const selectAll = () => {
+    playUiClick();
+    setSelectedIds(new Set(weapons.map((w) => w.id)));
+  };
+  const deselectAll = () => {
+    playUiClick();
+    setSelectedIds(new Set());
+  };
   const toggleItem = (id: string) => {
     setSelectedIds((prev) => {
       const next = new Set(prev);
@@ -50,9 +49,6 @@ export const WeaponPanel: React.FC = () => {
       return next;
     });
   };
-
-  const selectAll = () => setSelectedIds(new Set(weapons.map((w) => w.id)));
-  const deselectAll = () => setSelectedIds(new Set());
 
   const poolItems: PoolItem[] = useMemo(
     () =>
@@ -69,18 +65,13 @@ export const WeaponPanel: React.FC = () => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-      {/* Left: Hero Showcase Stage (~60%) */}
-      <div className="lg:col-span-7 xl:col-span-7 flex flex-col items-center justify-center gap-6">
+      <div className="lg:col-span-7 flex flex-col items-center justify-center gap-6">
         <div className="relative w-full max-w-lg min-h-[460px] flex items-center justify-center">
           {isPoolEmpty ? (
-            <Card className="w-full p-8 border-white/10 bg-[#0F1923]/90">
+            <Card className="w-full p-8 border-white/12 bg-bg-elevated/95">
               <EmptyState
                 title={t('common.empty')}
-                message={
-                  selectedIds.size === 0
-                    ? t('single.pool.emptyHint')
-                    : t('single.empty.hint')
-                }
+                message={selectedIds.size === 0 ? t('single.pool.emptyHint') : t('single.empty.hint')}
                 action={
                   <Button
                     variant="outline"
@@ -89,6 +80,7 @@ export const WeaponPanel: React.FC = () => {
                       selectedIds.size === 0
                         ? selectAll
                         : () => {
+                            playUiClick();
                             setSelectedCategory('all');
                             setCostMax(undefined);
                           }
@@ -101,8 +93,8 @@ export const WeaponPanel: React.FC = () => {
             </Card>
           ) : displayedWeapon ? (
             <div
-              className={`w-full transition-all duration-300 ${
-                isAnimating ? 'opacity-40 scale-95' : 'opacity-100 scale-100 animate-fade-up'
+              className={`w-full transition-all duration-200 motion-reduce:transition-none ${
+                isAnimating ? 'opacity-35 scale-[0.98]' : 'opacity-100 scale-100 animate-fade-up motion-reduce:animate-none'
               }`}
             >
               <WeaponCard weapon={displayedWeapon} highlight={Boolean(result)} />
@@ -115,99 +107,24 @@ export const WeaponPanel: React.FC = () => {
           />
         </div>
 
-        {/* Tactical "FIND MATCH" Style Random Button */}
         <button
           type="button"
           disabled={isPoolEmpty || isAnimating}
           onClick={() => randomize(pool)}
           className="val-btn-match w-full max-w-md text-base sm:text-lg clip-tactical"
         >
-          {isAnimating
-            ? t('single.scanning')
-            : result
-              ? t('common.reroll')
-              : t('common.random')}
+          {isAnimating ? t('single.scanning') : result ? t('common.reroll') : t('common.random')}
         </button>
       </div>
 
-      {/* Right: Control & Pool Sidebar (~40%) */}
-      <div className="lg:col-span-5 xl:col-span-5 flex flex-col gap-5">
-        <Card className="p-5 flex flex-col gap-4 border-white/10 bg-[#0F1923]/90 clip-corner-tl">
-          <div>
-            <h2 className="font-display font-black text-2xl uppercase tracking-wider text-val-offwhite">
-              {t('single.weapon.title')}
-            </h2>
-            <p className="text-xs text-white/50 mt-1 font-sans">{t('single.weapon.desc')}</p>
-          </div>
-
-          {/* Category selector */}
-          <div className="flex flex-col gap-2 pt-2 border-t border-white/10">
-            <label className="text-xs font-tactical font-bold tracking-widest uppercase text-white/60">
-              // {t('single.filter.category')}
-            </label>
-            <div className="flex flex-wrap gap-1.5" role="group">
-              <button
-                type="button"
-                onClick={() => setSelectedCategory('all')}
-                className={`px-2.5 py-1 text-xs font-tactical font-bold uppercase rounded border transition-all ${
-                  selectedCategory === 'all'
-                    ? 'bg-val-offwhite text-[#0F1923] border-val-offwhite'
-                    : 'bg-white/5 text-white/60 border-white/10 hover:border-white/30'
-                }`}
-              >
-                {t('common.all')}
-              </button>
-              {WEAPON_CATEGORIES.map((cat) => (
-                <button
-                  key={cat}
-                  type="button"
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`px-2.5 py-1 text-xs font-tactical font-bold uppercase rounded border transition-all ${
-                    selectedCategory === cat
-                      ? 'bg-val-red text-white border-val-red shadow-glow'
-                      : 'bg-white/5 text-white/60 border-white/10 hover:border-white/30'
-                  }`}
-                >
-                  {t(`weapon.category.${cat}` as const)}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Cost filter */}
-          <div className="flex flex-col gap-2 pt-2 border-t border-white/10">
-            <label className="text-xs font-tactical font-bold tracking-widest uppercase text-white/60">
-              // {t('single.filter.cost')}
-            </label>
-            <div className="flex gap-1.5">
-              {COST_PRESETS.map((preset) => {
-                const active = costMax === preset.max;
-                return (
-                  <button
-                    key={preset.label}
-                    type="button"
-                    onClick={() => setCostMax(preset.max)}
-                    className={`flex-1 px-2 py-1 text-xs font-tactical font-bold uppercase rounded border transition-all ${
-                      active
-                        ? 'bg-val-gold text-[#0F1923] border-val-gold font-bold'
-                        : 'bg-white/5 text-white/60 border-white/10 hover:border-white/30'
-                    }`}
-                  >
-                    {preset.label === 'any' ? t('single.filter.anyCost') : preset.label}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Pool Count */}
-          <div className="flex items-center justify-between text-xs font-tactical tracking-wider text-white/60 pt-2 border-t border-white/10">
-            <span>{t('single.filter.poolCount', { count: pool.length })}</span>
-            <Badge variant="default">
-              {selectedCategory === 'all' ? t('common.all') : selectedCategory}
-            </Badge>
-          </div>
-        </Card>
+      <div className="lg:col-span-5 flex flex-col gap-5">
+        <WeaponFilterCard
+          selectedCategory={selectedCategory}
+          costMax={costMax}
+          poolCount={pool.length}
+          onSelectCategory={setSelectedCategory}
+          onSelectCostMax={setCostMax}
+        />
 
         <PoolSelector
           items={poolItems}

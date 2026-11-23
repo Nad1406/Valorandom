@@ -84,5 +84,5 @@ export function getMissingRoles(result: SquadResult | null): Role[] {
  */
 export function rollTickDelay(progress: number): number {
   const p = progress < 0 ? 0 : progress > 1 ? 1 : progress;
-  return 50 + 140 * p * p;
+  return 45 + 115 * p * p;
 }

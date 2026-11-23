@@ -34,7 +34,7 @@ export const RoleSelect: React.FC<RoleSelectProps> = ({
   return (
     <div className="flex flex-col gap-1">
       {label && (
-        <label htmlFor={id} className="text-xs font-semibold text-val-muted">
+        <label htmlFor={id} className="text-xs font-tactical font-bold tracking-wider uppercase text-ink-muted">
           {label}
         </label>
       )}
@@ -44,10 +44,10 @@ export const RoleSelect: React.FC<RoleSelectProps> = ({
         onChange={handleChange}
         disabled={disabled}
         aria-label={label ?? t('squad.slot.role')}
-        className="rounded-lg border border-val-border bg-val-surface px-3 py-2 text-sm text-val-text transition-colors hover:border-val-red/50 focus:border-val-red focus:outline-none focus:ring-1 focus:ring-val-red disabled:cursor-not-allowed disabled:opacity-50"
+        className="w-full rounded-sm border border-white/15 bg-bg-base px-3 py-1.5 font-tactical text-sm font-semibold uppercase tracking-wider text-val-offwhite transition-colors hover:border-val-red/60 focus:border-val-red focus:outline-none focus:ring-1 focus:ring-val-red disabled:cursor-not-allowed disabled:opacity-45"
       >
         {SQUAD_ROLE_OPTIONS.map((role) => (
-          <option key={role} value={role}>
+          <option key={role} value={role} className="bg-bg-elevated text-val-offwhite">
             {t(`role.${role}` as TranslationKey)}
           </option>
         ))}
