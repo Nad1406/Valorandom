@@ -10,6 +10,7 @@ export const en: Record<TranslationKey, string> = {
   'lang.switch': 'Switch to {lang}',
   'sound.mute': 'Mute sound',
   'sound.unmute': 'Unmute sound',
+  'sound.volume': 'Volume',
   'footer.dataFrom': 'Data from',
   'footer.updatedAt': 'Updated on: {date}',
   'footer.createdBy': 'Created by',

@@ -8,6 +8,7 @@ export const vi = {
   'lang.switch': 'Chuyển sang {lang}',
   'sound.mute': 'Tắt âm thanh',
   'sound.unmute': 'Bật âm thanh',
+  'sound.volume': 'Âm lượng',
   'footer.dataFrom': 'Dữ liệu từ',
   'footer.updatedAt': 'Cập nhật: {date}',
   'footer.createdBy': 'Phát triển bởi',

@@ -1,4 +1,4 @@
-import { act, render, renderHook, screen } from '@testing-library/react';
+import { act, fireEvent, render, renderHook, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
@@ -72,6 +72,14 @@ describe('App Shell & Navigation (P1-06, P1-07, AC-01.1, AC-01.3)', () => {
     const mutedIcon = unmuteBtn.querySelector('svg.lucide');
     expect(mutedIcon).toBeInTheDocument();
     expect(mutedIcon?.querySelectorAll('line').length).toBe(2);
+
+    // Open volume slider popover and adjust volume
+    const volumeMenuBtn = screen.getByRole('button', { name: /âm lượng/i });
+    await user.click(volumeMenuBtn);
+    const slider = screen.getByRole('slider', { name: /âm lượng/i });
+    fireEvent.change(slider, { target: { value: '35' } });
+    expect(screen.getByText('35%')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /tắt âm thanh/i })).toBeInTheDocument();
   });
 
   it('useReducedMotion detects prefers-reduced-motion media query', () => {

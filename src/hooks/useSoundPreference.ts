@@ -1,23 +1,49 @@
-import { useEffect, useState } from 'react';
-import { getSoundEnabled, setSoundEnabled } from '@/lib/audio/tacticalSound';
+import { useCallback, useEffect, useState } from 'react';
+import {
+  getSoundEnabled,
+  getSoundVolume,
+  setSoundEnabled,
+  setSoundVolume,
+} from '@/lib/audio/tacticalSound';
 
 export function useSoundPreference() {
   const [soundEnabled, setSoundEnabledState] = useState<boolean>(() => getSoundEnabled());
+  const [volume, setVolumeState] = useState<number>(() => getSoundVolume());
 
   useEffect(() => {
-    const handler = (e: Event) => {
-      const customEvent = e as CustomEvent<boolean>;
-      setSoundEnabledState(customEvent.detail);
+    const onSoundChange = (e: Event) => {
+      setSoundEnabledState((e as CustomEvent<boolean>).detail);
     };
-    window.addEventListener('valorandom-sound-change', handler);
+    const onVolumeChange = (e: Event) => {
+      setVolumeState((e as CustomEvent<number>).detail);
+    };
+    window.addEventListener('valorandom-sound-change', onSoundChange);
+    window.addEventListener('valorandom-volume-change', onVolumeChange);
     return () => {
-      window.removeEventListener('valorandom-sound-change', handler);
+      window.removeEventListener('valorandom-sound-change', onSoundChange);
+      window.removeEventListener('valorandom-volume-change', onVolumeChange);
     };
   }, []);
 
-  const toggleSound = () => {
-    setSoundEnabled(!soundEnabled);
-  };
+  const toggleSound = useCallback(() => {
+    const next = !soundEnabled;
+    setSoundEnabled(next);
+    if (next && volume === 0) {
+      setSoundVolume(0.8);
+    }
+  }, [soundEnabled, volume]);
 
-  return { soundEnabled, toggleSound, setSoundEnabled };
+  const setVolume = useCallback(
+    (nextVolume: number) => {
+      setSoundVolume(nextVolume);
+      if (nextVolume <= 0 && soundEnabled) {
+        setSoundEnabled(false);
+      } else if (nextVolume > 0 && !soundEnabled) {
+        setSoundEnabled(true);
+      }
+    },
+    [soundEnabled],
+  );
+
+  return { soundEnabled, volume, toggleSound, setSoundEnabled, setVolume };
 }

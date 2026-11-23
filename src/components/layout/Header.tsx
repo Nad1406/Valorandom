@@ -1,20 +1,12 @@
 import React from 'react';
-import { Volume2, VolumeX } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { BrandLogo } from '@/components/ui';
-import { useSoundPreference } from '@/hooks/useSoundPreference';
-import { playConfirmSignal, playUiClick } from '@/lib/audio/tacticalSound';
+import { playUiClick } from '@/lib/audio/tacticalSound';
 import { useI18n } from '@/lib/i18n';
+import { VolumeControl } from './VolumeControl';
 
 export const Header: React.FC = () => {
   const { lang, toggleLang, t } = useI18n();
-  const { soundEnabled, toggleSound } = useSoundPreference();
-
-  const handleSoundToggle = () => {
-    const enabling = !soundEnabled;
-    toggleSound();
-    if (enabling) playConfirmSignal();
-  };
 
   const handleLangToggle = () => {
     playUiClick();
@@ -65,23 +57,7 @@ export const Header: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={handleSoundToggle}
-            className={`inline-flex items-center justify-center h-8 w-8 rounded-sm border transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-val-red ${
-              soundEnabled
-                ? 'border-white/15 bg-bg-elevated text-val-offwhite hover:border-val-red/60 hover:text-val-red'
-                : 'border-white/10 bg-bg-elevated/60 text-ink-muted hover:border-white/30 hover:text-val-offwhite'
-            }`}
-            aria-label={soundEnabled ? t('sound.mute') : t('sound.unmute')}
-            title={soundEnabled ? t('sound.mute') : t('sound.unmute')}
-          >
-            {soundEnabled ? (
-              <Volume2 className="w-4 h-4 shrink-0" strokeWidth={2} aria-hidden="true" />
-            ) : (
-              <VolumeX className="w-4 h-4 shrink-0" strokeWidth={2} aria-hidden="true" />
-            )}
-          </button>
+          <VolumeControl />
 
           <button
             type="button"

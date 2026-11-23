@@ -147,3 +147,44 @@
     transform: none;
   }
 }
+
+/* Valorant tactical range slider */
+.val-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to right,
+    #FF4655 0%,
+    #FF4655 var(--range-fill, 80%),
+    #1A2736 var(--range-fill, 80%),
+    #1A2736 100%
+  );
+  outline: none;
+}
+
+.val-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  background: #ECE8E1;
+  border: 2px solid #FF4655;
+  cursor: pointer;
+}
+
+.val-range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  background: #ECE8E1;
+  border: 2px solid #FF4655;
+  cursor: pointer;
+}
+
+.val-range:focus-visible {
+  outline: 2px solid #FF4655;
+  outline-offset: 4px;
+}
